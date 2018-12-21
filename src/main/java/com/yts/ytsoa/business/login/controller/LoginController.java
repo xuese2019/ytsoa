@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -48,10 +49,9 @@ public class LoginController {
             subject.getSession().setTimeout(1000 * 60 * 60 * 12);
         } catch (AuthenticationException e) {
             token.clear();
-            ObjectError objectError = new ObjectError("password", "密码错误");
-            result.getAllErrors().add(objectError);
             return new ModelAndView("/login/login")
-                    .addObject("model", model);
+                    .addObject("model", model)
+                    .addObject("errors","账号密码错误");
         }
         return new ModelAndView("/home/index")
                 .addObject("user", model);
