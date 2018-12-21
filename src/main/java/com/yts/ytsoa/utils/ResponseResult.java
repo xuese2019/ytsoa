@@ -1,0 +1,18 @@
+package com.yts.ytsoa.utils;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
+public class ResponseResult<T> {
+    private boolean success;
+    private String message;
+    private T data;
+}

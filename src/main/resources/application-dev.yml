@@ -1,0 +1,113 @@
+#tocmat设置
+server:
+  port: 9002
+  context-path: /
+  tomcat:
+    uri-encoding: UTF-8
+  #    允许的http请求
+  port-header: HEAD,PUT,DELETE,OPTIONS,TRACE,COPY,SEARCH,PROPFIND
+  #  是否启用响应压缩
+  compression:
+    enabled: true
+spring:
+  #限制上传文件大小，springboot默认限制为2M
+  http:
+    multipart:
+      enabled: true
+      #      单个文件大小
+      max-file-size: 1024KB
+      #      单次请求文件大小，为了应对多个文件同时上传的情况
+      max-request-size: 1024KB
+  # class文件编码
+  mandatory-file-encoding: UTF-8
+  thymeleaf:
+    prefix: classpath:/templates
+    encoding: UTF-8
+    #是否开启thymeleaf缓存
+    cache: false
+  #    datasource
+  ## 数据库配置
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.1.222:3306/ytsoa?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
+    ##  Hikari 连接池配置 ------ 详细配置请访问：https://github.com/brettwooldridge/HikariCP
+    ## 最小空闲连接数量
+    hikari:
+      minimum-idle: 5
+      ## 空闲连接存活最大时间，默认600000（10分钟）
+      idle-timeout: 180000
+      ## 连接池最大连接数，默认是10
+      maximum-pool-size: 10
+      ## 此属性控制从池返回的连接的默认自动提交行为,默认值：true
+      auto-commit: true
+      ## 连接池母子
+      pool-name: MyHikariCP
+      ## 此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
+      max-lifetime: 1800000
+      ## 数据库连接超时时间,默认30秒，即30000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+
+  #     控制台彩色输出
+  output:
+    ansi:
+      enabled: ALWAYS
+  #      应对OPTIONS请求，权限判断会出现此请求
+  mvc:
+    dispatch-options-request: true
+    #    默认静态路径
+    static-path-pattern: /**
+  resources:
+    static-locations: classpath:/static/,classpath:/error/,file:${upLoad.path}
+
+  #  jpa
+  jpa:
+    hibernate:
+      #    是否自动创建跟新表
+      ddl-auto: update
+      #配置jpa默认的表编码  字段排序编码
+      properties:
+        dialect: com.ld.sbjwtjpa.sys.jpa.MySQL5InnoDBDialectUtf8mb4
+    #      是否打印sql
+    #    show-sql: true
+    #    是否格式化sql
+    format-sql: true
+  #    是否启用aop
+  aop:
+    auto: true
+  mail:
+    mail-0:
+      host: smtp.126.com
+      username: 用户名  //发送方的邮箱
+      password: 密码  //对于qq邮箱而言 密码指的就是发送方的授权码
+      protocol: smtp
+    mail-1:
+      host: smtp.qq.com
+      username: 用户名  //发送方的邮箱
+      password: 密码  //对于qq邮箱而言 密码指的就是发送方的授权码
+      protocol: smtp
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#        starttls:
+#          enable: true
+#          required: true
+#默认分页条数
+page:
+  pageSize: 15
+
+#banner 启动动画文件
+# 启动动画文件编码
+banner:
+  charset: UTF-8
+# 启动动画文件地址
+#  location: classpath:banner.txt
+
+#配置日志
+logging:
+  #  默认日志格式 10M自动分割 最多存在7个文件
+    file: ytsoa.log

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="cn"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="context-path" content="@{/}"/>
+    <title>系统</title>
+</head>
+<body>
+<script th:inline="javascript">
+/*<![CDATA[*/
+var path = /*[[${#httpServletRequest.getScheme() + "://"
++ #httpServletRequest.getServerName() + ":"
++ #httpServletRequest.getServerPort()
++ #httpServletRequest.getContextPath()}]]*/;
+/*]]>*/
+
+</script>
+<script>
+    setTimeout(window.location.href=path+'/login/login',1);
+
+</script>
+</body>
+</html>
