@@ -39,4 +39,9 @@ public interface AccountMapper {
     })
     List<AccountModel> findAll(@Param("model") AccountModel model);
 
+    @Select({
+            "select * from account_table a where a.account = #{model.account}"
+    })
+    List<AccountModel> findByAccountAndPassword(@Param("model") AccountModel model);
+
 }

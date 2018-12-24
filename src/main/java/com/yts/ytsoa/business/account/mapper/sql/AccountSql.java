@@ -40,6 +40,8 @@ public class AccountSql {
                 }
                 if (model.getParents() != null && !model.getParents().isEmpty())
                     WHERE("parents=#{model.parents}");
+                if (model.getUuid() != null && !model.getUuid().isEmpty())
+                    WHERE("uuid=#{model.uuid}");
             }
         }.toString();
     }

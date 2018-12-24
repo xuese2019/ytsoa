@@ -9,7 +9,6 @@ import com.yts.ytsoa.utils.GetUuid;
 import com.yts.ytsoa.utils.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -20,14 +19,14 @@ import java.util.List;
  * @table
  * @remarks
  */
-@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+
 @Service
 public class AccountServiceImpl implements AccountService {
 
     @Autowired
     private AccountMapper mapper;
 
-
+    @Transactional
     @Override
     public ResponseResult<AccountModel> add(AccountModel model) {
         AccountModel requestModel = new AccountModel();
@@ -42,16 +41,16 @@ public class AccountServiceImpl implements AccountService {
         }
     }
 
-
+    @Transactional
     @Override
     public ResponseResult<AccountModel> deleteById(String uuid) {
         mapper.deleteById(uuid);
         return new ResponseResult<>(true, "成功", null);
     }
 
-
+    @Transactional
     @Override
-    public ResponseResult<AccountModel> updateById(AccountModel model, boolean b) {
+    public ResponseResult<AccountModel> updateById(AccountModel model) {
         mapper.updateById(model);
         return new ResponseResult<>(true, "成功", null);
     }
@@ -76,4 +75,12 @@ public class AccountServiceImpl implements AccountService {
             return new ResponseResult<>(false, "未查询到记录", null);
     }
 
+    @Override
+    public ResponseResult<List<AccountModel>> findByAccount(AccountModel model) {
+        List<AccountModel> list = mapper.findByAccountAndPassword(model);
+        if (list.size() > 0)
+            return new ResponseResult<>(true, "成功", list);
+        else
+            return new ResponseResult<>(false, "未查询到记录", null);
+    }
 }

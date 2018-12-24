@@ -18,11 +18,13 @@ public interface AccountService {
 
     ResponseResult<AccountModel> deleteById(String uuid);
 
-    ResponseResult<AccountModel> updateById(AccountModel model, boolean b);
+    ResponseResult<AccountModel> updateById(AccountModel model);
 
     ResponseResult<PageInfo<AccountModel>> findAll(int pageNow, int pageSize, AccountModel model);
 
     ResponseResult<List<AccountModel>> findAll(AccountModel model);
+
+    ResponseResult<List<AccountModel>> findByAccount(AccountModel model);
 
 
 }
