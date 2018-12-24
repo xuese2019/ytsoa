@@ -1,6 +1,8 @@
 package com.yts.ytsoa.views.controller;
 
+import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +15,8 @@ import java.util.StringJoiner;
 public class ViewsController {
 
     @RequiresAuthentication
+    @RequiresPermissions(value = {"abc"})
+//    @RequiresPermissions(value = {"abc"},logical = Logical.OR)
     @RequestMapping(value = "/{a}/{b}")
     public ModelAndView views(@PathVariable("a") String a,
                               @PathVariable("b") String b) {

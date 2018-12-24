@@ -1,0 +1,180 @@
+/* 
+* @Author: anchen
+* @Date:   2018-11-21 08:57:30
+* @Last Modified by:   anchen
+* @Last Modified time: 2018-11-23 15:35:48
+*/
+.header{
+    border-bottom:1px solid #d3dbde;
+    /*margin-left:30px;*/
+    width:100%;
+    padding:0;
+    height:50px;
+    margin-bottom:20px;
+    margin-top: 10px;
+}
+.header ul{
+    position: absolute;
+    left: -40px;
+    cursor:pointer;
+    top: 24px;
+}
+.header ul li{
+    margin:0px;
+    list-style:none;
+    float:left;
+    padding:7px 20px;
+    background-color:#f5f8f9;
+    font-size:15px;
+}
+.header ul li.tab-item.active{
+    border-top:3px solid #5ac5f3;
+    background-color:#fff;
+}
+.products .main {
+    display: none;
+}
+.products .main.selected {
+    display: block;
+}
+.header:after{
+    content:"";
+    clear:both;
+    display:block;
+}
+.xinxi{
+    display:block;
+}
+table{
+    margin-top:0;
+}
+th{
+    text-align:left;
+    padding-left:7px;
+}
+td{
+    border-bottom:1px dotted #c7c7c7;
+    
+}
+.td-l{
+    text-align:left;
+    width:30%;
+}
+.td-r{
+    text-align:right;
+    width:20%;
+}
+.td-right{
+    text-align:right;
+    width:20%;
+}
+.td-left{
+    text-align:left;
+}
+/*组成*/
+.zucheng{
+    width:95%;
+    margin-left:30px;
+}
+.zucheng .btn{
+    font-size:12px;
+    margin-left:7px;
+}
+/*日报*/
+.ribao table thead tr th{
+    text-align:center;
+}
+.nr{
+    width:60%;
+    text-align:left;
+}
+/*指令*/
+.zhiling table tbody tr td{
+    text-align:left;
+    padding-left:5px;
+}
+.zhiling table tbody tr td a{
+    color:#0329ec;
+}
+.jiansuo{
+    width:95%;
+    margin-left:30px;
+    margin-bottom:8px;
+}
+.header-r span a:hover{
+    color:#3bbce0;
+}
+.header-r{
+    margin-top:5px;
+    float:right;
+}
+.header-r span{
+    height:20px;
+    border:1px solid #d3dbde;
+    padding:5px 7px;
+    height:20px;
+    margin-right:3px;
+    font-size:13px;
+    display:inline-block;
+}
+/*.pic{
+    vertical-align: middle;
+}*/
+.header-r span a{
+    text-decoration:none;
+    color:#2d2b2b;
+}
+/*进展*/
+.riqi{
+    width:20%;
+}
+/*表现*/
+.py{
+    width:35%;
+}
+.biaoxian div{
+    width:95%;
+    margin: 10px 30px;
+    background: #f7f7f7;
+    line-height: 23px;
+    font-size:14px;
+}
+/*统计*/
+.tongji table{
+    margin-top:-25px;
+}
+/*管理*/
+.guanli .btn-primary{
+	float:right;
+	background-color:#fff;
+	color:#213ed8;
+	margin-top: -8px;
+}
+.guanli .btn-primary:hover{
+	background-color:#fff;
+	color:#213ed8;
+}
+.guanli ul{
+    position: absolute;
+    left: -25px;
+}
+.guanli ul li{
+    margin:0px;
+    list-style:none;
+    float:left;
+    padding:7px 20px;
+    font-size:15px;
+     margin-top: -7px;
+    margin-left:-5px;
+}
+.header-gl .act{
+    background-color:#4d97e4;
+}
+.header-gl{
+    margin-top:30px;
+    height:30px;
+    border-bottom:2px solid #5a74f5;
+    width:100%;
+    margin-left:-9px;
+    margin-top:0px;
+}

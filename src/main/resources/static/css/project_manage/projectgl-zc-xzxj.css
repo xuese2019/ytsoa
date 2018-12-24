@@ -1,0 +1,45 @@
+/* 
+* @Author: anchen
+* @Date:   2018-11-24 15:36:51
+* @Last Modified by:   anchen
+* @Last Modified time: 2018-11-24 16:32:26
+*/
+.modal-header div{
+    font-size:14px;
+    /*font-weight:600;
+    text-align:left;*/
+}
+.modal-body ul{
+    padding-left:0px;
+}
+.modal-body ul li{
+    list-style:none;
+    font-size:13px;
+    margin:5px 0;
+
+}
+.modal-body ul li label{
+    width:170px;
+    text-align:right;
+    font-weight:300;
+}
+.modal-body ul li .txt{
+    width:270px;
+    height:24px;
+} 
+.modal-body ul li div{
+    width:300px;
+    height:70px;
+    padding:3px 5px;
+    margin-top:4px;
+    display:inline-block;
+    background-color:#f0f0f0;
+}
+.modal-body ul li .btn{
+    padding:2px 5px;
+    margin-top:10px;
+}
+.modal-body ul li .sel{
+    height:29px;
+}
+

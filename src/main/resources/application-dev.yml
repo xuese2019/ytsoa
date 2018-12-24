@@ -110,4 +110,6 @@ banner:
 #配置日志
 logging:
   #  默认日志格式 10M自动分割 最多存在7个文件
-    file: ytsoa.log
+  file: ytsoa.log
+  level:
+    com.yts.ytsoa: debug

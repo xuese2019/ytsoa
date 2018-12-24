@@ -1,0 +1,89 @@
+<div class="row">
+    <span id="one_user_id" style="display:none;"><shiro:principal property='uuid'/></span>
+    <!-- right column -->
+    <div class="col-md-12">
+        <!-- Horizontal Form -->
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title">个人中心</h3>
+                <!--<input type="button" class="btn btn-info pull-right" value="确认" id="one_btn"/>-->
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">姓名</label>
+                            <div class="col-sm-8">
+                                <span class="form-control" id="user_name"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">性别</label>
+                            <div class="col-sm-8">
+                                <span class="form-control" id="user_xb"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" id="user_bm">所属部门</label>
+                            <div class="col-sm-8">
+                                <span class="form-control"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" id="user_zw">所属职位</label>
+                            <div class="col-sm-8">
+                                <span class="form-control"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">电话</label>
+                            <div class="col-sm-8">
+                                <span class="form-control" id="user_dh"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">账号</label>
+                            <div class="col-sm-8">
+                                <span class="form-control" id="user_account"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <!--<div class="box-footer">-->
+            <!--<input type="button" class="btn btn-info pull-right" value="确认" id="pwd_btn"/>-->
+            <!--</div>-->
+            <!-- /.box-footer -->
+        </div>
+        <!-- /.box -->
+    </div>
+    <!--/.col (right) -->
+</div>
+<script th:src="@{/js/account/one.js}"></script>

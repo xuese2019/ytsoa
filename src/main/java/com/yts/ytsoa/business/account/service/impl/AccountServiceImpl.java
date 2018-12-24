@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.yts.ytsoa.business.account.mapper.AccountMapper;
 import com.yts.ytsoa.business.account.model.AccountModel;
+import com.yts.ytsoa.business.account.model.AdminModel;
 import com.yts.ytsoa.business.account.service.AccountService;
 import com.yts.ytsoa.utils.GetUuid;
 import com.yts.ytsoa.utils.ResponseResult;
@@ -36,6 +37,7 @@ public class AccountServiceImpl implements AccountService {
             return new ResponseResult<>(false, "账户名称重复", null);
         else {
             model.setUuid(GetUuid.getUUID());
+            model.setLx(1);
             mapper.add(model);
             return new ResponseResult<>(true, "成功", null);
         }
@@ -59,7 +61,7 @@ public class AccountServiceImpl implements AccountService {
     public ResponseResult<PageInfo<AccountModel>> findAll(int pageNow, int pageSize, AccountModel model) {
         PageHelper.startPage(pageNow, pageSize);
         List<AccountModel> list = mapper.findAll(model);
-        PageInfo<AccountModel> page = new PageInfo<AccountModel>(list);
+        PageInfo<AccountModel> page = new PageInfo<>(list);
         if (page.getSize() > 0)
             return new ResponseResult<>(true, "成功", page);
         else
@@ -80,6 +82,15 @@ public class AccountServiceImpl implements AccountService {
         List<AccountModel> list = mapper.findByAccountAndPassword(model);
         if (list.size() > 0)
             return new ResponseResult<>(true, "成功", list);
+        else
+            return new ResponseResult<>(false, "未查询到记录", null);
+    }
+
+    @Override
+    public ResponseResult<AccountModel> getAdminByAccount(AdminModel model) {
+        AccountModel model1 = mapper.getAdminByAccount(model);
+        if (model1 != null)
+            return new ResponseResult<>(true, "成功", model1);
         else
             return new ResponseResult<>(false, "未查询到记录", null);
     }

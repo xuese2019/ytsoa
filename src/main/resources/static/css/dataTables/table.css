@@ -1,0 +1,50 @@
+*{
+	text-decoration:none;
+	list-style:none;
+}
+body{
+	background-color:#FFFFFF;
+}
+.ibox-title{
+	padding:7px 15px 15px 15px;
+}
+.ibox-title1{
+	margin-bottom: 0;
+}
+.ibox-title1{	
+	float: left;
+}
+.ibox-title1 li{
+	float: left;
+}
+.ibox-title2{
+	float: right;
+}
+.ibox-content{
+	margin-top:-15px;
+}
+.table_xinwen {
+	border:1px solid #e5e6e7;
+    height:30px;
+}
+.table_btn{
+	width:80px;
+	height:29px;
+	background-color:#1ab394;
+	border:1px solid #1ab394;
+    color:#fff;
+    margin-left:15px;
+}
+.wrapper {
+	padding:0;
+}
+.dataTables_paginate{
+	float:right;
+	margin-top:-20px;
+}
+.ckbox tr td:first-child,.ckbox tr th:first-child{
+	width:30px;
+}
+.table tbody tr td{
+	vertical-align:middle;
+}

@@ -1,0 +1,40 @@
+.modal-body{
+	height:390px;
+	padding:15px 35px;
+}
+.yuangong{
+	width:200px;
+	height:270px;
+	background-color:#f0f0f0;
+	border:1px solid #c0c0c0;
+	position: absolute;
+    top: 44px;
+    padding:3px;
+    z-index:200;
+    display:none;
+}
+.guan{
+	float:right;
+	border:none;
+	
+}
+.guan:hover{
+	cursor:pointer;
+}
+.modal-body .mz{
+	height:250px;
+	width:520px;
+	background-color:#f0f0f0;
+	border:1px solid #c0c0c0;
+	position: absolute;
+    top: 57px;
+    padding:3px;
+    z-index:199;
+}
+.modal-body .btn{
+	position: absolute;
+    top: 315px;
+}
+.modal-body .sele{
+	    margin-left: 10px;
+}

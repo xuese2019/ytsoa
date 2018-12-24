@@ -105,7 +105,7 @@ public class AccountController {
                 if (!md5Password2.equals(result2.getData().get(0).getPassword()))
                     return new ResponseResult<>(false, "原密码错误", null);
                 AccountModel model3 = new AccountModel();
-                model3.setUuid(model.getUuid());
+                model3.setUuid(user.getUuid());
                 String md5Password = DigestUtils.md5DigestAsHex(model.getPassword().getBytes(StandardCharsets.UTF_8));
                 model3.setPassword(md5Password);
                 ResponseResult<AccountModel> result1 = service.updateById(model3);

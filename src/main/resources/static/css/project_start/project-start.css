@@ -1,0 +1,74 @@
+*{
+	list-style:none;
+	font-size:14px;
+}
+.header{
+    margin:30px 0 25px 25px;
+    font-size:18px;
+     width:95%;
+     /*height:calc(100vh - 61px);*/
+     border-bottom: solid 1px #ccc;
+     font-weight:bold;
+     
+}
+.start{
+	width:95%;
+	/*height:calc(100vh - 61px);*/
+	background-color:#FFFFFF;
+    margin-left:30px;
+}
+span{
+   /* border-bottom: solid 3px #1ab394;*/
+    font-size:15px;
+}
+.forminfo li label {
+    width: 200px;
+    line-height: 34px;
+    display: block;
+    float: left;
+    text-align: right;
+}
+.forminfo li{
+	margin-top:10px;
+    margin-left:10%;
+    margin-bottom: 10px;
+}
+.tijiao{
+	width:100px;
+	height:35px;
+	background-color:#1ab394;
+	border:1px solid #1ab394;
+	color:#FFFFFF;
+}
+.forminfo li .txtare{
+	height:85px;
+	width:500px;
+}
+.forminfo .sele{
+	height:33px;
+}
+.beijing,.pingding,.yaoqui,.wtr,.jingli,.jgr,.xmjl-wtr,.xmcy-wtr,.anpai{
+	display:none;
+}
+.jingli i{
+	font-style:normal;
+	color:#908888;
+	font-size:12px;
+}
+.anpai a{
+	position:relative;
+	top:2px;
+	text-decoration:none;
+	color:#30f;
+	padding:5px;
+	display:inline-block;
+}
+.btn-primary{
+	background-color:#fff;
+	border:#fff;
+}
+.btn-primary:hover{
+	background-color:#fff;
+	border:#fff;
+	color:#30f;
+}

@@ -21,7 +21,7 @@ $(document).ready(function(){
                 }else{
                     $('#errors').show();
                     $('#errors').text(req.message);
-                    setTimeout(window.location.href = path + req.data,3);
+                    setTimeout(window.location.href = path + req.data,3000);
                 }
             },
             complete:function(){

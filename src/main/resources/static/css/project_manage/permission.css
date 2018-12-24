@@ -1,0 +1,56 @@
+/* 
+* @Author: anchen
+* @Date:   2018-11-16 12:59:58
+* @Last Modified by:   anchen
+* @Last Modified time: 2018-11-21 13:40:19
+*/
+ul.domtree,
+ul.domtree ul {
+    margin: 0;
+    padding: 0 0 0 2em;
+}
+ul.domtree li {
+    list-style: none;
+    position: relative;
+}
+ul.domtree>li:first-child:before {
+    border-style: none none solid none;
+}
+ul.domtree li:before {
+    position: absolute;
+    content: '';
+    top: -0.01em;
+    left: -0.7em;
+    width: 0.5em;
+    height: 0.615em;
+    border-style: none none solid solid;
+    border-width: 0.05em;
+    border-color: #aaa;
+}
+ul.domtree li:not(:last-child):after {
+    position: absolute;
+    content: '';
+    top: 0.7em;
+    left: -0.7em;
+    bottom: 0;
+    border-style: none none none solid;
+    border-width: 0.05em;
+    border-color: #aaa;
+}
+.one a{
+    text-decoration:none;
+}
+a{
+    color:#333;
+}
+ul li{
+    padding-top:5px;
+}
+
+#btn{
+    background:#eee;
+    border:1px solid #ccc;
+    padding:3px 9px;
+}
+
+

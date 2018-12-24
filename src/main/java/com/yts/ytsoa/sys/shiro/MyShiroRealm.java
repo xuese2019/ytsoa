@@ -1,6 +1,7 @@
 package com.yts.ytsoa.sys.shiro;
 
 import com.yts.ytsoa.business.account.model.AccountModel;
+import com.yts.ytsoa.business.account.model.AdminModel;
 import com.yts.ytsoa.business.account.service.AccountService;
 import com.yts.ytsoa.utils.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +27,17 @@ public class MyShiroRealm extends AuthorizingRealm {
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection arg0) {
         // TODO Auto-generated method stub
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+        AccountModel model = (AccountModel) arg0.getPrimaryPrincipal();
+        switch (model.getLx()) {
+            case -1:
+                info.addRole("admin");
+                break;
+            case 1:
+                info.addRole("user");
+                break;
+            default:
+                info.addRole("user");
+        }
 //        ResponseResult<List<QxglModel>> result = qxglService.findQxByAcc(null);
 //        if (result.isSuccess()) {
 //            result.getData().forEach(k -> {
@@ -33,6 +45,7 @@ public class MyShiroRealm extends AuthorizingRealm {
 //                info.addStringPermission(k.getQxbs());
 //            });
 //        }
+        info.addStringPermission("abc");
         return info;
     }
 
@@ -46,9 +59,20 @@ public class MyShiroRealm extends AuthorizingRealm {
         AccountModel model = new AccountModel();
         model.setAccount(username);
         ResponseResult<List<AccountModel>> result = accountService.findByAccount(model);
-        if (!result.isSuccess())
-            throw new AuthenticationException("用户名或密码不正确!");
-        return new SimpleAuthenticationInfo(result.getData().get(0), result.getData().get(0).getPassword(), getName());
+        if (!result.isSuccess()) {
+            AdminModel adminModel = new AdminModel();
+            adminModel.setAccount(username);
+            ResponseResult<AccountModel> result1 = accountService.getAdminByAccount(adminModel);
+            if (result1.isSuccess()) {
+                AccountModel model1 = result1.getData();
+                model1.setLx(-1);
+                return new SimpleAuthenticationInfo(result1.getData(), result1.getData().getPassword(), getName());
+            } else
+                throw new AuthenticationException("用户名或密码不正确!");
+        }
+        AccountModel model1 = result.getData().get(0);
+        model1.setLx(1);
+        return new SimpleAuthenticationInfo(model1, model1.getPassword(), getName());
     }
 
 }

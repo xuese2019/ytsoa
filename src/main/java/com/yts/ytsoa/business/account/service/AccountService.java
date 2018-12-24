@@ -2,6 +2,7 @@ package com.yts.ytsoa.business.account.service;
 
 import com.github.pagehelper.PageInfo;
 import com.yts.ytsoa.business.account.model.AccountModel;
+import com.yts.ytsoa.business.account.model.AdminModel;
 import com.yts.ytsoa.utils.ResponseResult;
 
 import java.util.List;
@@ -26,5 +27,5 @@ public interface AccountService {
 
     ResponseResult<List<AccountModel>> findByAccount(AccountModel model);
 
-
+    ResponseResult<AccountModel> getAdminByAccount(AdminModel model);
 }

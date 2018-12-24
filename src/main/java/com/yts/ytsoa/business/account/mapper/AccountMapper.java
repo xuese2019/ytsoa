@@ -2,6 +2,7 @@ package com.yts.ytsoa.business.account.mapper;
 
 import com.yts.ytsoa.business.account.mapper.sql.AccountSql;
 import com.yts.ytsoa.business.account.model.AccountModel;
+import com.yts.ytsoa.business.account.model.AdminModel;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -43,5 +44,10 @@ public interface AccountMapper {
             "select * from account_table a where a.account = #{model.account}"
     })
     List<AccountModel> findByAccountAndPassword(@Param("model") AccountModel model);
+
+    @Select({
+            "select * from admin_table a where a.account = #{model.account}"
+    })
+    AccountModel getAdminByAccount(@Param("model") AdminModel model);
 
 }
