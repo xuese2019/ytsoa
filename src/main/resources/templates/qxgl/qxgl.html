@@ -1,0 +1,58 @@
+<div class="row">
+    <div class="col-md-6">
+        <!-- Horizontal Form -->
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title">权限管理</h3>
+                <input type="button" class="btn btn-info pull-right" value="新增" onclick="qxgl_add_btn(0)"/>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <div class="box-body">
+                <div class="col-sm-4">
+                    <div id="zzjg_tree">
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <!--<input type="button" class="btn btn-info pull-right" value="确认" id="pwd_btn"/>-->
+            </div>
+            <!-- /.box-footer -->
+        </div>
+        <!-- /.box -->
+    </div>
+    <!--/.col (right) -->
+    <div class="col-md-6">
+        <!-- Horizontal Form -->
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <input type="button" class="btn btn-info pull-right" value="确定"/>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <div class="box-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th style="width: 10px">#</th>
+                        <th>名称</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="qxgl_table_data">
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <!--<input type="button" class="btn btn-info pull-right" value="确认" id="pwd_btn"/>-->
+            </div>
+            <!-- /.box-footer -->
+        </div>
+        <!-- /.box -->
+    </div>
+    <!--/.col (right) -->
+</div>
+
+<script th:src="@{/js/qxgl/qxgl.js}"></script>
