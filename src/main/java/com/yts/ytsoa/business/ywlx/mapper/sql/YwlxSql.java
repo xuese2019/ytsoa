@@ -11,12 +11,14 @@ public class YwlxSql {
             {
                 SELECT("*");
                 FROM("ywlx_table");
-                if (model.getYwlxmc() != null && !model.getYwlxmc().isEmpty()) {
-                    model.setYwlxmc("%" + model.getYwlxmc() + "%");
-                    WHERE("ywlxmc like #{model.ywlxmc}");
+                if (model != null) {
+                    if (model.getYwlxmc() != null && !model.getYwlxmc().isEmpty()) {
+                        model.setYwlxmc("%" + model.getYwlxmc() + "%");
+                        WHERE("ywlxmc like #{model.ywlxmc}");
+                    }
+                    if (model.getUuid() != null && !model.getUuid().isEmpty())
+                        WHERE("uuid = #{model.uuid}");
                 }
-                if (model.getUuid() != null && !model.getUuid().isEmpty())
-                    WHERE("uuid = #{model.uuid}");
             }
         }.toString();
     }

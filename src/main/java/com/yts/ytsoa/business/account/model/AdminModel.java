@@ -1,6 +1,5 @@
 package com.yts.ytsoa.business.account.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,7 +9,6 @@ import lombok.extern.slf4j.Slf4j;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 /**
  */

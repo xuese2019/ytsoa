@@ -1,8 +1,8 @@
-package com.yts.ytsoa.business.ywlx.controller;
+package com.yts.ytsoa.business.xmfl.controller;
 
 import com.github.pagehelper.PageInfo;
-import com.yts.ytsoa.business.ywlx.model.YwlxModel;
-import com.yts.ytsoa.business.ywlx.service.YwlxService;
+import com.yts.ytsoa.business.xmfl.model.XmflModel;
+import com.yts.ytsoa.business.xmfl.service.XmflService;
 import com.yts.ytsoa.utils.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
@@ -17,19 +17,19 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/ywlx")
-public class YwlxController {
+@RequestMapping("/xmfl")
+public class XmflController {
 
     @Value("${page.pageSize}")
     private int pageSize;
 
     @Autowired
-    private YwlxService service;
+    private XmflService service;
 
     @RequiresAuthentication
     @RequiresRoles(value = {"admin"})
-    @RequestMapping(value = "/ywlx", method = RequestMethod.POST)
-    public ResponseResult<YwlxModel> add(@Valid @ModelAttribute("form") YwlxModel model,
+    @RequestMapping(value = "/xmfl", method = RequestMethod.POST)
+    public ResponseResult<XmflModel> add(@Valid @ModelAttribute("form") XmflModel model,
                                          BindingResult result) throws Exception {
         if (result.hasErrors())
             return new ResponseResult<>(false, result.getAllErrors().get(0).getDefaultMessage());
@@ -38,15 +38,15 @@ public class YwlxController {
 
     @RequiresAuthentication
     @RequiresRoles(value = {"admin"})
-    @RequestMapping(value = "/ywlx/{uuid}", method = RequestMethod.DELETE)
-    public ResponseResult<YwlxModel> deleteById(@PathVariable("uuid") String uuid) throws Exception {
+    @RequestMapping(value = "/xmfl/{uuid}", method = RequestMethod.DELETE)
+    public ResponseResult<XmflModel> deleteById(@PathVariable("uuid") String uuid) throws Exception {
         return service.deleteById(uuid);
     }
 
     @RequiresAuthentication
     @RequiresRoles(value = {"admin"})
-    @RequestMapping(value = "/ywlx", method = RequestMethod.PUT)
-    public ResponseResult<YwlxModel> updateById(@Valid @ModelAttribute("form") YwlxModel model,
+    @RequestMapping(value = "/xmfl", method = RequestMethod.PUT)
+    public ResponseResult<XmflModel> updateById(@Valid @ModelAttribute("form") XmflModel model,
                                                 BindingResult result) throws Exception {
         if (result.hasErrors())
             return new ResponseResult<>(false, result.getAllErrors().get(0).getDefaultMessage());
@@ -55,22 +55,22 @@ public class YwlxController {
 
     @RequiresAuthentication
     @RequiresRoles(value = {"admin"})
-    @RequestMapping(value = "/ywlx/{pageNow}", method = RequestMethod.GET)
-    public ResponseResult<PageInfo<YwlxModel>> findAll(@PathVariable("pageNow") int pageNow,
-                                                       @ModelAttribute("form") YwlxModel model) throws Exception {
+    @RequestMapping(value = "/xmfl/{pageNow}", method = RequestMethod.GET)
+    public ResponseResult<PageInfo<XmflModel>> findAll(@PathVariable("pageNow") int pageNow,
+                                                       @ModelAttribute("form") XmflModel model) throws Exception {
         return service.findAll(pageNow, pageSize, model);
     }
 
     @RequiresAuthentication
-    @RequestMapping(value = "/ywlx", method = RequestMethod.GET)
-    public ResponseResult<List<YwlxModel>> findAll() throws Exception {
+    @RequestMapping(value = "/xmfl", method = RequestMethod.GET)
+    public ResponseResult<List<XmflModel>> findAll() throws Exception {
         return service.findAll();
     }
 
     @RequiresAuthentication
     @RequiresRoles(value = {"admin"})
     @RequestMapping(value = "/oneId/{uuid}", method = RequestMethod.GET)
-    public ResponseResult<YwlxModel> getById(@PathVariable("uuid") String uuid) throws Exception {
+    public ResponseResult<XmflModel> getById(@PathVariable("uuid") String uuid) throws Exception {
         return service.getById(uuid);
     }
 }

@@ -94,6 +94,7 @@ public class GlobalExceptionHandler {
         else
             response.encodeRedirectURL("/error/500");
     }
+
     /**
      * 数据库错误
      *
@@ -103,8 +104,8 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(value = BadSqlGrammarException.class)
     public void badSqlGrammarException(HttpServletRequest request,
-                                        HttpServletResponse response,
-                                        Exception exception) throws Exception {
+                                       HttpServletResponse response,
+                                       Exception exception) throws Exception {
         exception.printStackTrace();
         log.debug("ERROR::::：" + exception.getLocalizedMessage() + "::::::" + new Date());
         log.debug("ERROR::::：" + exception.getCause() + "::::::" + new Date());

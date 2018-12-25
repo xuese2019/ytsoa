@@ -1,9 +1,10 @@
 package com.yts.ytsoa.business.ywlx.mapper;
 
-import com.github.pagehelper.Page;
 import com.yts.ytsoa.business.ywlx.mapper.sql.YwlxSql;
 import com.yts.ytsoa.business.ywlx.model.YwlxModel;
 import org.apache.ibatis.annotations.*;
+
+import java.util.List;
 
 /**
  * @author ld
@@ -32,11 +33,16 @@ public interface YwlxMapper {
     void updateById(@Param("model") YwlxModel model) throws Exception;
 
     @SelectProvider(type = YwlxSql.class, method = "findAllSql")
-    Page<YwlxModel> findAll(@Param("model") YwlxModel model) throws Exception;
+    List<YwlxModel> findAll(@Param("model") YwlxModel model) throws Exception;
 
     @Select({
             "select * from" + table + " where uuid = #{id}"
     })
     YwlxModel getById(@Param("id") String id) throws Exception;
+
+    @Select({
+            "select * from" + table + " where ywlxmc = #{ywlxmc}"
+    })
+    List<YwlxModel> findByYwlxmc(@Param("ywlxmc") String ywlxmc) throws Exception;
 
 }

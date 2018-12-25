@@ -29,7 +29,12 @@
 
         <form action="#" id="login_form">
             <div class="form-group has-feedback">
-                <input type="text" class="form-control" placeholder="请输入账号" name="account" value="123456"/>
+                <!--<input type="text" class="form-control" placeholder="请输入账号" name="account" value="123456"/>-->
+                <select class="form-control" name="account">
+                    <option value="">请选择</option>
+                    <option value="123456">123456</option>
+                    <option value="admin">admin</option>
+                </select>
                 <span class="glyphicon glyphicon glyphicon-user form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">

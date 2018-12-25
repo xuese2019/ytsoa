@@ -10,11 +10,11 @@ var localhostPaht=curWwwPath.substring(0,pos);
 var path = localhostPaht;
 $(document).ready(function(){
     //判断浏览器是否支持H5
-     if (window.applicationCache) {
-     } else {
-        $('div').remove();
-        $('body').html('您的浏览器不支持H5，请更换浏览器');
-     }
+//     if (window.applicationCache) {
+//     } else {
+//        $('div').remove();
+//        $('body').html('您的浏览器不支持H5，请更换浏览器');
+//     }
     $('#login_btn').click(function(){
         var obj = $(this);
         $.ajax({
