@@ -1,0 +1,69 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">业务类型</h3>
+                <input type="button" class="btn btn-info pull-right" value="新增" data-toggle="modal"
+                       data-target="#ywlx_add_model" style="margin-left:5px;">
+                <input type="button" class="btn btn-info pull-right" value="查询" id="ywlx_ser">
+                <input type="text" class="form-control pull-right" name="ywlxmc" placeholder="业务类型名称"
+                       style="width:180px;">
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th style="width: 10px">#</th>
+                        <th>名称</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td style="width: 10px">1</td>
+                        <td>名称</td>
+                        <td>操作</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /.box -->
+    </div>
+    <!-- /.col -->
+</div>
+<div class="modal fade" id="ywlx_add_model">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">新增业务类型</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="ywlx_add_form">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">业务类型名称</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="ywlxmc">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-8">
+                            <span id="errors"></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <!--<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>-->
+                <input type="button" class="btn btn-primary" value="确定" id="ywlx_add_btn">
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<script th:src="@{/js/ywlx/add.js}"></script>

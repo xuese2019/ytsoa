@@ -14,12 +14,12 @@ import org.springframework.web.servlet.ModelAndView;
 public class IndexController {
 
     @RequestMapping(value = "/")
-    public ModelAndView index() {
+    public ModelAndView index() throws Exception {
         return new ModelAndView("redirect:/index");
     }
 
     @RequestMapping(value = "/index")
-    public ModelAndView index2() {
+    public ModelAndView index2() throws Exception {
         return new ModelAndView("/index");
     }
 

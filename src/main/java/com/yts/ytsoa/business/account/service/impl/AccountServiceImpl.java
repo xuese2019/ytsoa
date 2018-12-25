@@ -29,7 +29,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Transactional
     @Override
-    public ResponseResult<AccountModel> add(AccountModel model) {
+    public ResponseResult<AccountModel> add(AccountModel model) throws Exception {
         AccountModel requestModel = new AccountModel();
         requestModel.setAccount(model.getAccount());
         List<AccountModel> list = mapper.findAll(requestModel);
@@ -45,20 +45,20 @@ public class AccountServiceImpl implements AccountService {
 
     @Transactional
     @Override
-    public ResponseResult<AccountModel> deleteById(String uuid) {
+    public ResponseResult<AccountModel> deleteById(String uuid) throws Exception {
         mapper.deleteById(uuid);
         return new ResponseResult<>(true, "成功", null);
     }
 
     @Transactional
     @Override
-    public ResponseResult<AccountModel> updateById(AccountModel model) {
+    public ResponseResult<AccountModel> updateById(AccountModel model) throws Exception {
         mapper.updateById(model);
         return new ResponseResult<>(true, "成功", null);
     }
 
     @Override
-    public ResponseResult<PageInfo<AccountModel>> findAll(int pageNow, int pageSize, AccountModel model) {
+    public ResponseResult<PageInfo<AccountModel>> findAll(int pageNow, int pageSize, AccountModel model) throws Exception {
         PageHelper.startPage(pageNow, pageSize);
         List<AccountModel> list = mapper.findAll(model);
         PageInfo<AccountModel> page = new PageInfo<>(list);
@@ -69,7 +69,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public ResponseResult<List<AccountModel>> findAll(AccountModel model) {
+    public ResponseResult<List<AccountModel>> findAll(AccountModel model) throws Exception {
         List<AccountModel> list = mapper.findAll(model);
         if (list.size() > 0)
             return new ResponseResult<>(true, "成功", list);
@@ -78,7 +78,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public ResponseResult<List<AccountModel>> findByAccount(AccountModel model) {
+    public ResponseResult<List<AccountModel>> findByAccount(AccountModel model) throws Exception {
         List<AccountModel> list = mapper.findByAccountAndPassword(model);
         if (list.size() > 0)
             return new ResponseResult<>(true, "成功", list);
@@ -87,7 +87,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public ResponseResult<AccountModel> getAdminByAccount(AdminModel model) {
+    public ResponseResult<AccountModel> getAdminByAccount(AdminModel model) throws Exception {
         AccountModel model1 = mapper.getAdminByAccount(model);
         if (model1 != null)
             return new ResponseResult<>(true, "成功", model1);

@@ -16,7 +16,7 @@ public class HomeController {
 
     @RequiresAuthentication
     @RequestMapping(value = "/index")
-    public ModelAndView index() {
+    public ModelAndView index()  throws Exception {
 //        String account = (String) SecurityUtils.getSubject().getSession().getAttribute("account");
         return new ModelAndView("/home/index");
     }

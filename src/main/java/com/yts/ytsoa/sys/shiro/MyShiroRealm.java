@@ -54,25 +54,27 @@ public class MyShiroRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) {
-
-        String username = (String) authcToken.getPrincipal();
-        AccountModel model = new AccountModel();
-        model.setAccount(username);
-        ResponseResult<List<AccountModel>> result = accountService.findByAccount(model);
-        if (!result.isSuccess()) {
-            AdminModel adminModel = new AdminModel();
-            adminModel.setAccount(username);
-            ResponseResult<AccountModel> result1 = accountService.getAdminByAccount(adminModel);
-            if (result1.isSuccess()) {
-                AccountModel model1 = result1.getData();
-                model1.setLx(-1);
-                return new SimpleAuthenticationInfo(result1.getData(), result1.getData().getPassword(), getName());
-            } else
-                throw new AuthenticationException("用户名或密码不正确!");
+        try {
+            String username = (String) authcToken.getPrincipal();
+            AccountModel model = new AccountModel();
+            model.setAccount(username);
+            ResponseResult<List<AccountModel>> result = accountService.findByAccount(model);
+            if (!result.isSuccess()) {
+                AdminModel adminModel = new AdminModel();
+                adminModel.setAccount(username);
+                ResponseResult<AccountModel> result1 = accountService.getAdminByAccount(adminModel);
+                if (result1.isSuccess()) {
+                    AccountModel model1 = result1.getData();
+                    model1.setLx(-1);
+                    return new SimpleAuthenticationInfo(result1.getData(), result1.getData().getPassword(), getName());
+                } else
+                    throw new AuthenticationException("用户名或密码不正确!");
+            }
+            AccountModel model1 = result.getData().get(0);
+            model1.setLx(1);
+            return new SimpleAuthenticationInfo(model1, model1.getPassword(), getName());
+        } catch (Exception e) {
+            throw new AuthenticationException("内部错误!");
         }
-        AccountModel model1 = result.getData().get(0);
-        model1.setLx(1);
-        return new SimpleAuthenticationInfo(model1, model1.getPassword(), getName());
     }
-
 }

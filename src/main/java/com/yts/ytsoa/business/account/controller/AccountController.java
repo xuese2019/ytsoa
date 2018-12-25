@@ -39,13 +39,13 @@ public class AccountController {
     @RequestMapping(value = "/account/{pageNow}", method = RequestMethod.POST)
     public ResponseResult<PageInfo<AccountModel>> findAll(@PathVariable("pageNow") int pageNow,
                                                           @RequestBody AccountModel model,
-                                                          HttpServletRequest request) {
+                                                          HttpServletRequest request) throws Exception {
         return service.findAll(pageNow, pageSize, model);
     }
 
     @RequiresAuthentication
     @RequestMapping(value = "/account/{uuid}", method = RequestMethod.GET)
-    public ResponseResult<AccountModel> getById(@PathVariable("uuid") String uuid) {
+    public ResponseResult<AccountModel> getById(@PathVariable("uuid") String uuid) throws Exception {
         AccountModel model = new AccountModel();
         model.setUuid(uuid);
         ResponseResult<List<AccountModel>> result = service.findAll(model);
@@ -55,7 +55,7 @@ public class AccountController {
     @RequiresAuthentication
     @RequestMapping(value = "/account", method = RequestMethod.POST)
     public ResponseResult<AccountModel> add(@Valid @ModelAttribute("form") AccountModel model,
-                                            BindingResult result) {
+                                            BindingResult result) throws Exception {
         if (result.hasErrors())
             return new ResponseResult<>(false, result.getAllErrors().get(0).getDefaultMessage(), null);
         model.setIsLogin("Y");
@@ -68,20 +68,20 @@ public class AccountController {
 
     @RequiresAuthentication
     @RequestMapping(value = "/account/{uuid}", method = RequestMethod.DELETE)
-    public ResponseResult<AccountModel> deleteById(@PathVariable("uuid") String uuid) {
+    public ResponseResult<AccountModel> deleteById(@PathVariable("uuid") String uuid) throws Exception {
         return service.deleteById(uuid);
     }
 
     @RequiresAuthentication
     @RequestMapping(value = "/account", method = RequestMethod.PUT)
-    public ResponseResult<AccountModel> updateById(@ModelAttribute("form") AccountModel model) {
+    public ResponseResult<AccountModel> updateById(@ModelAttribute("form") AccountModel model) throws Exception {
         return service.updateById(model);
     }
 
     @RequiresAuthentication
     @RequestMapping(value = "/isLogin", method = RequestMethod.PUT)
     public ResponseResult<AccountModel> isLogin(@RequestParam("uuid") String uuid,
-                                                @RequestParam("isLogin") String isLogin) {
+                                                @RequestParam("isLogin") String isLogin) throws Exception {
         AccountModel model = new AccountModel();
         model.setUuid(uuid);
         model.setIsLogin(isLogin);
@@ -91,7 +91,7 @@ public class AccountController {
     @RequiresAuthentication
     @RequestMapping(value = "/updatePwd", method = RequestMethod.PUT)
     public ResponseResult<String> updateByAccount(@Valid @ModelAttribute("form") PWDModel model,
-                                                  BindingResult result) {
+                                                  BindingResult result) throws Exception {
         if (result.hasErrors())
             return new ResponseResult<>(false, result.getAllErrors().get(0).getDefaultMessage(), null);
 
@@ -121,7 +121,7 @@ public class AccountController {
 
     @RequiresAuthentication
     @RequestMapping(value = "/czmm", method = RequestMethod.PUT)
-    public ResponseResult<AccountModel> czmm(@RequestParam("uuid") String uuid) {
+    public ResponseResult<AccountModel> czmm(@RequestParam("uuid") String uuid) throws Exception {
         AccountModel model = new AccountModel();
         model.setUuid(uuid);
         String md5Password = DigestUtils.md5DigestAsHex("123456".getBytes(StandardCharsets.UTF_8));

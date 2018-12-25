@@ -18,9 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 @Slf4j
@@ -32,13 +30,13 @@ public class LoginController {
     private AccountService accountService;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView login() {
+    public ModelAndView login() throws Exception {
         return new ModelAndView("/login/login");
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseResult<String> login(@Valid @ModelAttribute("form") AccountModel model,
-                                        BindingResult result){
+                                        BindingResult result) throws Exception {
         if (result.hasErrors())
             return new ResponseResult<>(false, result.getAllErrors().get(0).getDefaultMessage(), null);
         String md5Password = DigestUtils.md5DigestAsHex(model.getPassword().getBytes(StandardCharsets.UTF_8));
@@ -58,7 +56,7 @@ public class LoginController {
 
     @RequiresAuthentication
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public ModelAndView logout() {
+    public ModelAndView logout() throws Exception {
         SecurityUtils.getSubject().logout();
         return new ModelAndView("redirect:/index");
     }

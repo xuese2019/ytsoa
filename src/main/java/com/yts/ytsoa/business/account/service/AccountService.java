@@ -15,17 +15,17 @@ import java.util.List;
  */
 public interface AccountService {
 
-    ResponseResult<AccountModel> add(AccountModel model);
+    ResponseResult<AccountModel> add(AccountModel model) throws Exception;
 
-    ResponseResult<AccountModel> deleteById(String uuid);
+    ResponseResult<AccountModel> deleteById(String uuid) throws Exception;
 
-    ResponseResult<AccountModel> updateById(AccountModel model);
+    ResponseResult<AccountModel> updateById(AccountModel model) throws Exception;
 
-    ResponseResult<PageInfo<AccountModel>> findAll(int pageNow, int pageSize, AccountModel model);
+    ResponseResult<PageInfo<AccountModel>> findAll(int pageNow, int pageSize, AccountModel model) throws Exception;
 
-    ResponseResult<List<AccountModel>> findAll(AccountModel model);
+    ResponseResult<List<AccountModel>> findAll(AccountModel model) throws Exception;
 
-    ResponseResult<List<AccountModel>> findByAccount(AccountModel model);
+    ResponseResult<List<AccountModel>> findByAccount(AccountModel model) throws Exception;
 
-    ResponseResult<AccountModel> getAdminByAccount(AdminModel model);
+    ResponseResult<AccountModel> getAdminByAccount(AdminModel model) throws Exception;
 }
