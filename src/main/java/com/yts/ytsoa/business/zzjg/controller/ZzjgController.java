@@ -33,9 +33,9 @@ public class ZzjgController {
         if (result.hasErrors())
             return new ResponseResult<>(false, result.getAllErrors().get(0).getDefaultMessage());
         if (model.getUuid() != null && !model.getUuid().isEmpty())
-            return service.add(model);
-        else
             return service.updateById(model);
+        else
+            return service.add(model);
     }
 
     @RequiresAuthentication

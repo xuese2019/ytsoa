@@ -79,10 +79,10 @@
                         <div class="col-sm-8">
                             <div class="input-group">
                                 <div class="input-group-addon">
-                                    <i class="glyphicon glyphicon-menu-hamburger"></i>
+                                    <i class="glyphicon glyphicon-menu-hamburger" onclick="apply_zzjg_select()"></i>
                                 </div>
-                                <input type="text" class="form-control pull-right" id="cjbm" name="cjbm"
-                                       readonly="readonly">
+                                <input type="hidden" class="form-control pull-right" id="cjbmid" name="cjbm">
+                                <input type="text" class="form-control pull-right" id="cjbmtext" readonly="readonly">
                             </div>
                         </div>
                     </div>
@@ -141,4 +141,28 @@
         <!--/.col (right) -->
     </form>
 </div>
+<input type="button" id="apply_zzjg_select_model_btn" data-toggle="modal" data-target="#apply_zzjg_select_model"
+       style="display:none;">
+<div class="modal fade" id="apply_zzjg_select_model">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" id="zzjg_add_update_model_close" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">组织机构信息</h4>
+            </div>
+            <div class="modal-body">
+                <div id="zzjg_tree"></div>
+            </div>
+            <div class="modal-footer">
+                <!--<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>-->
+                <input type="button" class="btn btn-primary" value="确定" data-dismiss="modal">
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 <script th:src="@{/js/xmwt/apply.js}"></script>

@@ -1,6 +1,5 @@
 package com.yts.ytsoa.business.zzjg.service;
 
-import com.github.pagehelper.PageInfo;
 import com.yts.ytsoa.business.zzjg.model.ZzjgModel;
 import com.yts.ytsoa.utils.ResponseResult;
 
