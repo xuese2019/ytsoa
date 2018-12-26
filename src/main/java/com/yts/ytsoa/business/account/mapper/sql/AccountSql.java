@@ -36,6 +36,10 @@ public class AccountSql {
                     model.setAccount("%" + model.getAccount() + "%");
                     WHERE("account like #{model.account}");
                 }
+                if (model.getName() != null && !model.getName().isEmpty()) {
+                    model.setName("%" + model.getName() + "%");
+                    WHERE("name like #{model.name}");
+                }
                 if (model.getUuid() != null && !model.getUuid().isEmpty())
                     WHERE("uuid=#{model.uuid}");
             }

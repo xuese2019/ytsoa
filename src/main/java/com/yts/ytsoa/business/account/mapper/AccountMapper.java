@@ -41,6 +41,11 @@ public interface AccountMapper {
     List<AccountModel> findAll(@Param("model") AccountModel model) throws Exception;
 
     @Select({
+            "select * from " + table + " where account = #{account}"
+    })
+    List<AccountModel> findByAccount(@Param("account") String account) throws Exception;
+
+    @Select({
             "select * from account_table a where a.account = #{model.account}"
     })
     @ResultMap(value = "accountMap")

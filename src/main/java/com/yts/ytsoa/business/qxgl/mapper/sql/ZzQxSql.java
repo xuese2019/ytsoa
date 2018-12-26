@@ -23,7 +23,6 @@ public class ZzQxSql {
             sj.add(s + ";");
         });
         String s = sj.toString().substring(0, sj.toString().length() - 1);
-        System.out.println(s);
         return s;
     }
 }

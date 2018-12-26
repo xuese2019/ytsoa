@@ -1,6 +1,7 @@
 package com.yts.ytsoa.business.qxgl.mapper;
 
 import com.yts.ytsoa.business.qxgl.mapper.sql.ZzQxSql;
+import com.yts.ytsoa.business.qxgl.model.QxglModel;
 import com.yts.ytsoa.business.qxgl.model.ZzQxModel;
 import org.apache.ibatis.annotations.*;
 
@@ -23,12 +24,12 @@ public interface ZzQxMapper {
     List<ZzQxModel> findByZzid(@Param("zzid") String zzid);
 
     @Select({
-            "select * from " + table + " z " +
-                    "left join zzjg_table jg on jg.uuid = z.zzid " +
-                    "left join account_table a on a.bmid = jg.uuid " +
-                    "where a.uuid = #{accid}"
+            "select q.* from account_table a"
+                    + " left join zz_qx_table z on z.zzid = a.bmid"
+                    + " left join qxgl_table q on q.uuid = z.qxid"
+                    + " where a.uuid = #{accid}"
     })
-    List<ZzQxModel> findByAccid(@Param("accid") String accid);
+    List<QxglModel> findByAccid(@Param("accid") String accid);
 
     @Delete({
             "delete from " + table + " where zzid = #{zzid}"
@@ -40,7 +41,7 @@ public interface ZzQxMapper {
     })
     void add(@Param("model") ZzQxModel model);
 
-    @InsertProvider(type = ZzQxSql.class,method = "inserts")
+    @InsertProvider(type = ZzQxSql.class, method = "inserts")
     void adds(@Param("list") List<ZzQxModel> list);
 
 }

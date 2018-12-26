@@ -46,7 +46,7 @@ function dg(obj){
 //                           +'         <span class="glyphicon glyphicon-menu-right"></span>'
                    + a
                    +'         <span style="padding:10px;padding-left:1px;">'+e.zzjgmc+'</span>'
-                   +'         <input type="button" class="btn btn-info btn-xs" value="管理权限" onclick="zzjg_glqx_btn(\''+e.uuid+'\')">'
+                   +'         <input type="button" class="btn btn-info btn-xs" value="管理权限" onclick="init2(\''+e.uuid+'\')">'
                    +'     </div>'
                    +'     <div style="padding-left:10px;">'
                     + b
@@ -69,12 +69,13 @@ function zzjg_tree_or_show(obj){
     }
 }
 //权限树
-function init2(){
+function init2(o){
+    zzid = o;
     $('#qxgl_tree').find('div').remove();
     $.ajax({
         url:path+"/qxgl/qxgl",
         dataType:"json",
-        async:true,
+        async:false,
         type:"get",
         cache:false,//关闭缓存
         ifModified :true,//关闭缓存
@@ -85,6 +86,7 @@ function init2(){
             //请求成功时处理
             if(req.success){
                 $('#qxgl_tree').append(dg2(req.data));
+                zzjg_glqx_syydqx(o);
             }
         },
         complete:function(){
@@ -155,16 +157,11 @@ function dgsj(obj){
     return;
 }
 //获取系统所有权限
-function zzjg_glqx_btn(o){
-    zzid = o;
-    init2();
-    zzjg_glqx_syydqx(o);
-}
 function zzjg_glqx_syydqx(o){
     $.ajax({
         url:path+"/qxgl/zzqx/"+o,
         dataType:"json",
-        async:true,
+        async:false,
         type:"get",
         cache:false,//关闭缓存
         ifModified :true,//关闭缓存

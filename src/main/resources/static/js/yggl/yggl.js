@@ -1,4 +1,11 @@
+var yggl_page = 1;
 $(document).ready(function(){
+    //条件分页查询
+    page($('#yggl_ser'));
+    $('#yggl_ser').click(function(){
+        yggl_page = 1;
+        page(this);
+    });
     $('#rzrq').datepicker({
           autoclose: true,
         todayHighlight: true,
@@ -115,4 +122,78 @@ function yggl_zzjg_tree_or_show(obj){
 function yggl_zzjg_sel_btn(a,b){
     $('#bmid').val(a);
     $('#bmidtext').val(b);
+}
+//条件分页查询
+function page(obj){
+    $('#yggl_table_data').find('tr').remove();
+    $.ajax({
+        url:path+"/account/page/"+Number(yggl_page),
+        dataType:"json",
+        async:true,
+        data:$('#yggl_ser_form').serialize(),
+        type:"get",
+        cache:false,//关闭缓存
+        ifModified :true,//关闭缓存
+        beforeSend:function(){
+            //请求前的处理
+            $(obj).addClass("disabled");
+        },
+        success:function(req){
+            //请求成功时处理
+            if(req.success){
+                $(req.data.list).each(function(index,e){
+                    var del = '';
+                    if($('#accountDelete').length > 0)
+                        del = '<input type="button" class="btn btn-danger btn-xs" value="删除" onclick="yggl_delete(\''+e.uuid+'\')">&nbsp;';
+                    var upd = '';
+                    if($('#accountUpdate').length > 0)
+                        upd = '<input type="button" class="btn btn-info btn-xs" value="修改" onclick="yggl_update(\''+e.uuid+'\')">&nbsp;';
+                    var tr = '<tr>'
+                            +'<td>'+(index+1)+'</td>'
+                            +'<td>'+e.name+'</td>'
+                            +'<td>'+e.account+'</td>'
+                            +'<td>'+e.sex+'</td>'
+//                            +'<td>'+e.bmid+'</td>'
+                            +'<td>'+e.phone+'</td>'
+                            +'<td>'+e.systimes+'</td>'
+                            +'<td>'+e.rzrq+'</td>'
+                            +'<td>'+(e.isLogin == 'Y' ? '是' : '否')+'</td>'
+                            +'<td>'
+                            + del
+                            + upd
+                            +'</td>'
+                            +'</tr>';
+                    $('#yggl_table_data').append(tr);
+                });
+                pageHelp(req.data);
+            }
+        },
+        complete:function(){
+            //请求完成的处理
+            $(obj).removeClass("disabled");
+        },
+        error:function(XMLHttpRequest, textStatus, errorThrown){
+            //请求出错处理
+        }
+    });
+}
+//分页相关
+function pageHelp(obj){
+    $('#page_help').find('.page_help').remove();
+    $('#page_pages').html(obj.pages);
+    $('#page_total').html(obj.total);
+    if(!obj.isFirstPage)
+        $('#page_help').append('<li class="paginate_button page_help"><a href="javascript:click_page(1);">首页</a></li>');
+    $(obj.navigatepageNums).each(function(index,e){
+        if(Number(yggl_page) == e)
+            $('#page_help').append('<li class="paginate_button active page_help"><a href="javascript:click_page('+e+');">'+e+'</a></li>');
+        else
+            $('#page_help').append('<li class="paginate_button page_help"><a href="javascript:click_page('+e+');">'+e+'</a></li>');
+    });
+    if(!obj.isLastPage)
+        $('#page_help').append('<li class="paginate_button page_help"><a href="javascript:click_page('+obj.pages+');">末页</a></li>');
+}
+function click_page(o){
+    yggl_page = o;
+    page($('#yggl_ser'));
 }

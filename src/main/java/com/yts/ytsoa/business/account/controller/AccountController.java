@@ -38,9 +38,9 @@ public class AccountController {
     private AccountService service;
 
     @RequiresAuthentication
-    @RequestMapping(value = "/account/{pageNow}", method = RequestMethod.POST)
+    @RequestMapping(value = "/page/{pageNow}", method = RequestMethod.GET)
     public ResponseResult<PageInfo<AccountModel>> findAll(@PathVariable("pageNow") int pageNow,
-                                                          @RequestBody AccountModel model,
+                                                          @ModelAttribute("form") AccountModel model,
                                                           HttpServletRequest request) throws Exception {
         return service.findAll(pageNow, pageSize, model);
     }

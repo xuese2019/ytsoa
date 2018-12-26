@@ -6,7 +6,6 @@ import com.yts.ytsoa.business.account.mapper.AccountMapper;
 import com.yts.ytsoa.business.account.model.AccountModel;
 import com.yts.ytsoa.business.account.model.AdminModel;
 import com.yts.ytsoa.business.account.service.AccountService;
-import com.yts.ytsoa.utils.GetUuid;
 import com.yts.ytsoa.utils.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,9 +29,7 @@ public class AccountServiceImpl implements AccountService {
     @Transactional
     @Override
     public ResponseResult<AccountModel> add(AccountModel model) throws Exception {
-        AccountModel requestModel = new AccountModel();
-        requestModel.setAccount(model.getAccount());
-        List<AccountModel> list = mapper.findAll(requestModel);
+        List<AccountModel> list = mapper.findByAccount(model.getAccount());
         if (list.size() > 0)
             return new ResponseResult<>(false, "账户重复", null);
         else {

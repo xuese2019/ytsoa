@@ -1,6 +1,7 @@
 package com.yts.ytsoa.business.qxgl.service.impl;
 
 import com.yts.ytsoa.business.qxgl.mapper.ZzQxMapper;
+import com.yts.ytsoa.business.qxgl.model.QxglModel;
 import com.yts.ytsoa.business.qxgl.model.ZzQxModel;
 import com.yts.ytsoa.business.qxgl.service.ZzQxService;
 import com.yts.ytsoa.utils.ResponseResult;
@@ -27,9 +28,9 @@ public class ZzQxServiceImpl implements ZzQxService {
     }
 
     @Override
-    public ResponseResult<List<ZzQxModel>> findByAccid(String accid) {
-        List<ZzQxModel> list = mapper.findByAccid(accid);
-        if (list.size() > 0)
+    public ResponseResult<List<QxglModel>> findByAccid(String accid) {
+        List<QxglModel> list = mapper.findByAccid(accid);
+        if (list.size() > 0 && list.get(0) != null)
             return new ResponseResult<>(true, "成功", list);
         return new ResponseResult<>(false, "未查询到记录");
     }

@@ -4,12 +4,18 @@
             <div class="box-header with-border">
                 <h3 class="box-title">员工管理</h3>
                 <input type="button" class="btn btn-info pull-right" value="新增" data-toggle="modal"
-                       data-target="#yggl_add_model" style="margin-left:5px;">
+                       data-target="#yggl_add_model" style="margin-left:5px;" shiro:hasAnyPermissions="accountAdd">
                 <form class="form-horizontal pull-right" id="yggl_ser_form">
                     <input type="button" class="btn btn-info pull-right" value="查询" id="yggl_ser">
-                    <input type="text" class="form-control pull-right" name="ygglmc" placeholder="名称"
+                    <input type="text" class="form-control pull-right" name="name" placeholder="名称"
+                           style="width:180px;">
+                    <input type="text" class="form-control pull-right" name="account" placeholder="账号"
                            style="width:180px;">
                 </form>
+                <div style="display:none;">
+                    <div shiro:hasAnyPermissions="accountUpdate" id="accountUpdate"></div>
+                    <div shiro:hasAnyPermissions="accountDelete" id="accountDelete"></div>
+                </div>
             </div>
             <!-- /.box-header -->
             <div class="box-body no-padding">
@@ -20,12 +26,10 @@
                         <th>姓名</th>
                         <th>账号</th>
                         <th>性别</th>
-                        <th>所属部门/职位</th>
+                        <!--<th>所属部门/职位</th>-->
                         <th>电话</th>
                         <th>创建日期</th>
-                        <th>创建人</th>
                         <th>入职日期</th>
-                        <th>离职日期</th>
                         <th>是否允许登陆</th>
                         <th>操作</th>
                     </tr>
@@ -78,7 +82,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label"><span style="color:red;">*</span>账号</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="ygglmc">
+                            <input type="text" class="form-control" name="account">
                             <input type="hidden" class="form-control" name="password" value="123456">
                         </div>
                     </div>
