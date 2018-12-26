@@ -3,14 +3,18 @@ package com.yts.ytsoa;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yts.ytsoa.utils.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.authz.AuthorizationException;
+import org.apache.shiro.authz.UnauthorizedException;
 import org.springframework.jdbc.BadSqlGrammarException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.servlet.ModelAndViewDefiningException;
 import org.thymeleaf.exceptions.TemplateInputException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLSyntaxErrorException;
 import java.util.Arrays;
@@ -33,7 +37,7 @@ public class GlobalExceptionHandler {
     }
 
     private void res(HttpServletResponse response,
-                     String str) throws Exception {
+                     String str) throws IOException {
         ResponseResult<String> result = new ResponseResult<>();
         result.setSuccess(false);
         result.setMessage(str);
@@ -48,6 +52,78 @@ public class GlobalExceptionHandler {
     }
 
     /**
+     * 权限不足
+     *
+     * @param request
+     * @param exception
+     * @return
+     */
+    @ExceptionHandler(value = AuthorizationException.class)
+    public void authorizationException(HttpServletRequest request,
+                                       HttpServletResponse response,
+                                       Exception exception) throws IOException {
+        exception.printStackTrace();
+        log.debug("ERROR::::：" + exception.getLocalizedMessage() + "::::::" + new Date());
+        log.debug("ERROR::::：" + exception.getCause() + "::::::" + new Date());
+        log.debug("ERROR::::：" + Arrays.toString(exception.getSuppressed()) + "::::::" + new Date());
+        log.debug("ERROR::::：" + exception.getMessage() + "::::::" + new Date());
+        log.debug("ERROR::::：" + Arrays.toString(exception.getStackTrace()) + "::::::" + new Date());
+        boolean b = isAjaxRequest(request);
+        if (b)
+            res(response, "权限不足");
+        else
+            response.encodeRedirectURL("/error/403");
+    }
+
+    /**
+     * 权限不足
+     *
+     * @param request
+     * @param exception
+     * @return
+     */
+    @ExceptionHandler(value = UnauthorizedException.class)
+    public void unauthorizedException(HttpServletRequest request,
+                                      HttpServletResponse response,
+                                      Exception exception) throws IOException {
+        exception.printStackTrace();
+        log.debug("ERROR::::：" + exception.getLocalizedMessage() + "::::::" + new Date());
+        log.debug("ERROR::::：" + exception.getCause() + "::::::" + new Date());
+        log.debug("ERROR::::：" + Arrays.toString(exception.getSuppressed()) + "::::::" + new Date());
+        log.debug("ERROR::::：" + exception.getMessage() + "::::::" + new Date());
+        log.debug("ERROR::::：" + Arrays.toString(exception.getStackTrace()) + "::::::" + new Date());
+        boolean b = isAjaxRequest(request);
+        if (b)
+            res(response, "权限不足");
+        else
+            response.encodeRedirectURL("/error/403");
+    }
+
+    /**
+     * 页面不存在或出现编译错误
+     *
+     * @param request
+     * @param exception
+     * @return
+     */
+    @ExceptionHandler(value = ModelAndViewDefiningException.class)
+    public void modelAndViewDefiningException(HttpServletRequest request,
+                                              HttpServletResponse response,
+                                              Exception exception) throws IOException {
+        exception.printStackTrace();
+        log.debug("ERROR::::：" + exception.getLocalizedMessage() + "::::::" + new Date());
+        log.debug("ERROR::::：" + exception.getCause() + "::::::" + new Date());
+        log.debug("ERROR::::：" + Arrays.toString(exception.getSuppressed()) + "::::::" + new Date());
+        log.debug("ERROR::::：" + exception.getMessage() + "::::::" + new Date());
+        log.debug("ERROR::::：" + Arrays.toString(exception.getStackTrace()) + "::::::" + new Date());
+        boolean b = isAjaxRequest(request);
+        if (b)
+            res(response, "页面不存在或出现编译错误");
+        else
+            response.encodeRedirectURL("/error/500");
+    }
+
+    /**
      * 页面不存在或出现编译错误
      *
      * @param request
@@ -57,7 +133,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = TemplateInputException.class)
     public void templateInputException(HttpServletRequest request,
                                        HttpServletResponse response,
-                                       Exception exception) throws Exception {
+                                       Exception exception) throws IOException {
         exception.printStackTrace();
         log.debug("ERROR::::：" + exception.getLocalizedMessage() + "::::::" + new Date());
         log.debug("ERROR::::：" + exception.getCause() + "::::::" + new Date());
@@ -81,7 +157,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = SQLSyntaxErrorException.class)
     public void sQLSyntaxErrorException(HttpServletRequest request,
                                         HttpServletResponse response,
-                                        Exception exception) throws Exception {
+                                        Exception exception) throws IOException {
         exception.printStackTrace();
         log.debug("ERROR::::：" + exception.getLocalizedMessage() + "::::::" + new Date());
         log.debug("ERROR::::：" + exception.getCause() + "::::::" + new Date());
@@ -105,7 +181,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = BadSqlGrammarException.class)
     public void badSqlGrammarException(HttpServletRequest request,
                                        HttpServletResponse response,
-                                       Exception exception) throws Exception {
+                                       Exception exception) throws IOException {
         exception.printStackTrace();
         log.debug("ERROR::::：" + exception.getLocalizedMessage() + "::::::" + new Date());
         log.debug("ERROR::::：" + exception.getCause() + "::::::" + new Date());
@@ -119,6 +195,29 @@ public class GlobalExceptionHandler {
             response.encodeRedirectURL("/error/500");
     }
 
+    /**
+     * IO异常
+     *
+     * @param request
+     * @param exception
+     * @return
+     */
+    @ExceptionHandler(value = IOException.class)
+    public void iOException(HttpServletRequest request,
+                            HttpServletResponse response,
+                            Exception exception) throws IOException {
+        exception.printStackTrace();
+        log.debug("ERROR::::：" + exception.getLocalizedMessage() + "::::::" + new Date());
+        log.debug("ERROR::::：" + exception.getCause() + "::::::" + new Date());
+        log.debug("ERROR::::：" + Arrays.toString(exception.getSuppressed()) + "::::::" + new Date());
+        log.debug("ERROR::::：" + exception.getMessage() + "::::::" + new Date());
+        log.debug("ERROR::::：" + Arrays.toString(exception.getStackTrace()) + "::::::" + new Date());
+        boolean b = isAjaxRequest(request);
+        if (b)
+            res(response, "输入输出错误");
+        else
+            response.encodeRedirectURL("/error/500");
+    }
 
     /**
      * 全局异常
@@ -130,7 +229,31 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = MyException.class)
     public void myException(HttpServletRequest request,
                             HttpServletResponse response,
-                            Exception exception) throws Exception {
+                            Exception exception) throws IOException {
+        exception.printStackTrace();
+        log.debug("ERROR::::：" + exception.getLocalizedMessage() + "::::::" + new Date());
+        log.debug("ERROR::::：" + exception.getCause() + "::::::" + new Date());
+        log.debug("ERROR::::：" + Arrays.toString(exception.getSuppressed()) + "::::::" + new Date());
+        log.debug("ERROR::::：" + exception.getMessage() + "::::::" + new Date());
+        log.debug("ERROR::::：" + Arrays.toString(exception.getStackTrace()) + "::::::" + new Date());
+        boolean b = isAjaxRequest(request);
+        if (b)
+            res(response, "内部错误");
+        else
+            response.encodeRedirectURL("/error/500");
+    }
+
+    /**
+     * 全局异常
+     *
+     * @param request
+     * @param exception
+     * @return
+     */
+    @ExceptionHandler(value = RuntimeException.class)
+    public void runtimeException(HttpServletRequest request,
+                                 HttpServletResponse response,
+                                 Exception exception) throws IOException {
         exception.printStackTrace();
         log.debug("ERROR::::：" + exception.getLocalizedMessage() + "::::::" + new Date());
         log.debug("ERROR::::：" + exception.getCause() + "::::::" + new Date());

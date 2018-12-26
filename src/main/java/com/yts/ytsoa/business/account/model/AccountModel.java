@@ -6,11 +6,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * lombok常用注解整理
@@ -36,20 +38,18 @@ import java.sql.Timestamp;
 public class AccountModel implements Serializable {
 
     private String uuid;
-    //    账户
+    /*姓名*/
+    private String name;
+    /*账户*/
     @NotBlank(message = "账户不能为空")
     @Size(max = 200, message = "账户最大长度为200位")
     private String account;
-    //    密码
+    /*密码*/
     @NotBlank(message = "密码不能为空")
     @Size(max = 200, message = "密码最大长度为200位")
     private String password;
-    //    加密盐
-    private String salt;
     //    账户类型( -1:管理员 1：普通用户)
     private int lx = 1;
-    //    所属上级
-    private String parents;
     //    所属部门
     private String bmid;
     //    是否首次登录-更改为是否允许登录 N:不允许 Y：允许
@@ -57,7 +57,15 @@ public class AccountModel implements Serializable {
     //    账户生成系统时间
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Timestamp systimes;
+    //    入职日期
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    private Date rzrq;
     //    账户生成人
     private String creatorAccId;
+    //    性别
+    private String sex;
+    //    电话
+    @Length(min = 11, max = 11, message = "电话长度为11位")
+    private String phone;
 
 }

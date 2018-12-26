@@ -19,9 +19,9 @@ public interface AccountMapper {
     String table = " account_table ";
 
     @Insert({
-            "insert into " + table + " (uuid,account,password,salt,lx,parents,bmid,is_login,systimes,creator_acc_id,name,phone) " +
-                    " values (replace(uuid(), '-', ''),#{model.account},#{model.password},#{model.salt},#{model.lx},#{model.parents}," +
-                    "#{model.isLogin},#{model.systimes},#{model.creatorAccId},#{model.name},#{model.phone})"
+            "insert into " + table + " (uuid,name,account,password,lx,bmid,is_login,systimes,rzrq,creator_acc_id,sex,phone) " +
+                    " values (replace(uuid(), '-', ''),#{model.name},#{model.account},#{model.password},#{model.lx},#{model.bmid}," +
+                    "#{model.isLogin},#{model.systimes},#{model.rzrq},#{model.creatorAccId},#{model.sex},#{model.phone})"
     })
     void add(@Param("model") AccountModel model) throws Exception;
 
@@ -43,6 +43,7 @@ public interface AccountMapper {
     @Select({
             "select * from account_table a where a.account = #{model.account}"
     })
+    @ResultMap(value = "accountMap")
     List<AccountModel> findByAccountAndPassword(@Param("model") AccountModel model) throws Exception;
 
     @Select({

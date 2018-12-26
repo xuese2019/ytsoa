@@ -34,10 +34,8 @@ public class AccountServiceImpl implements AccountService {
         requestModel.setAccount(model.getAccount());
         List<AccountModel> list = mapper.findAll(requestModel);
         if (list.size() > 0)
-            return new ResponseResult<>(false, "账户名称重复", null);
+            return new ResponseResult<>(false, "账户重复", null);
         else {
-            model.setUuid(GetUuid.getUUID());
-            model.setLx(1);
             mapper.add(model);
             return new ResponseResult<>(true, "成功", null);
         }

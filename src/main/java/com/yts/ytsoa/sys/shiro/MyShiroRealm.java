@@ -66,13 +66,17 @@ public class MyShiroRealm extends AuthorizingRealm {
                 if (result1.isSuccess()) {
                     AccountModel model1 = result1.getData();
                     model1.setLx(-1);
+                    model1.setIsLogin("Y");
                     return new SimpleAuthenticationInfo(result1.getData(), result1.getData().getPassword(), getName());
                 } else
                     throw new AuthenticationException("用户名或密码不正确!");
             }
             AccountModel model1 = result.getData().get(0);
             model1.setLx(1);
-            return new SimpleAuthenticationInfo(model1, model1.getPassword(), getName());
+            if (model1.getIsLogin() != null && model1.getIsLogin().equals("Y"))
+                return new SimpleAuthenticationInfo(model1, model1.getPassword(), getName());
+            else
+                throw new AuthenticationException("当前账户禁止登陆!");
         } catch (Exception e) {
             throw new AuthenticationException("内部错误!");
         }

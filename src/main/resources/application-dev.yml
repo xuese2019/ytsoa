@@ -23,6 +23,7 @@ spring:
   thymeleaf:
     prefix: classpath:/templates
     encoding: UTF-8
+    mode: HTML
     #是否开启thymeleaf缓存
     cache: false
   #    datasource
@@ -30,7 +31,7 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.1.222:3306/ytsoa?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+    url: jdbc:mysql://192.168.1.222:3306/ytsoa?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8&allowMultiQueries=true
     username: root
     password: root
     ##  Hikari 连接池配置 ------ 详细配置请访问：https://github.com/brettwooldridge/HikariCP

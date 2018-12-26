@@ -12,6 +12,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <title>管理系统</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+    <meta name="context-path" content="@{/}"/>
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
     <!-- Font Awesome -->
     <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}"/>
@@ -402,10 +403,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="javascript:$('#index_home_right').attr('src','person.html');"><i
-                                class="glyphicon glyphicon-user"></i>
-                            <span>人事管理</span></a>
+                    <li class="treeview">
+                        <a href="#"><i class="fa  fa-cny"></i> <span>人事管理</span>
+                            <span class="pull-right-container">
+               					   <i class="fa fa-angle-left pull-right"></i>
+             				   </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="javascript:toPage('/views/yggl/yggl');"><i
+                                        class="fa fa-circle-o"></i>员工管理
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="treeview">
                         <a href="#"><i class="fa fa-link"></i> <span>讨论组</span>
@@ -686,15 +696,5 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!--/*]]>*/-->
 
 <!--</script>-->
-<script>
-<!--内部容器跳转页面-->
-function toPage(o){
-    $.get(o,function(data){
-　　　　$("#body_content").html(data);
-　　});
-}
-
-
-</script>
 </body>
 </html>

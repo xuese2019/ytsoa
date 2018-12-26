@@ -18,8 +18,6 @@ public class AccountSql {
                 UPDATE("account_table");
                 if (model.getPassword() != null && !model.getPassword().isEmpty())
                     SET("password=#{model.password}");
-                if (model.getParents() != null && !model.getParents().isEmpty())
-                    SET("parents=#{model.parents}");
                 if (model.getBmid() != null && !model.getBmid().isEmpty())
                     SET("bmid=#{model.bmid}");
                 if (model.getIsLogin() != null && !model.getIsLogin().isEmpty())
@@ -38,8 +36,6 @@ public class AccountSql {
                     model.setAccount("%" + model.getAccount() + "%");
                     WHERE("account like #{model.account}");
                 }
-                if (model.getParents() != null && !model.getParents().isEmpty())
-                    WHERE("parents=#{model.parents}");
                 if (model.getUuid() != null && !model.getUuid().isEmpty())
                     WHERE("uuid=#{model.uuid}");
             }

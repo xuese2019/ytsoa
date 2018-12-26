@@ -61,7 +61,7 @@ $(document).ready(function(){
                 if(!req.success)
                     alert(req.message);
                 else{
-                    $('#xmfl_update_form')[0].reset()
+                    $('#xmfl_update_form')[0].reset();
                     $('#xmfl_update_close').click();
                     page($('#xmfl_ser'));
                 }

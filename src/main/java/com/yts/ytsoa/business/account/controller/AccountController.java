@@ -6,7 +6,9 @@ import com.yts.ytsoa.business.account.model.PWDModel;
 import com.yts.ytsoa.business.account.service.AccountService;
 import com.yts.ytsoa.utils.ResponseResult;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.DigestUtils;
@@ -53,16 +55,19 @@ public class AccountController {
     }
 
     @RequiresAuthentication
+    @RequiresPermissions(value = {"accountAdd"}, logical = Logical.OR)
     @RequestMapping(value = "/account", method = RequestMethod.POST)
     public ResponseResult<AccountModel> add(@Valid @ModelAttribute("form") AccountModel model,
                                             BindingResult result) throws Exception {
         if (result.hasErrors())
             return new ResponseResult<>(false, result.getAllErrors().get(0).getDefaultMessage(), null);
-        model.setIsLogin("Y");
         model.setSystimes(new Timestamp(System.currentTimeMillis()));
         //对密码进行 md5 加密
-        String md5Password = DigestUtils.md5DigestAsHex("123456".getBytes(StandardCharsets.UTF_8));
+        String md5Password = DigestUtils.md5DigestAsHex(model.getPassword().getBytes(StandardCharsets.UTF_8));
         model.setPassword(md5Password);
+        AccountModel user = (AccountModel) SecurityUtils.getSubject().getPrincipal();
+        model.setCreatorAccId(user.getUuid());
+        model.setLx(1);
         return service.add(model);
     }
 
