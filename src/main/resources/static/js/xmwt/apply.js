@@ -7,24 +7,6 @@ $(document).ready(function(){
     });
 //		日期
     DatePicker("#xmkssj","#xmjssj");
-//    $('#xmkssj').datepicker({
-//        autoclose: true,
-//        todayHighlight: true,
-//        language:"zh-CN",
-//        format:"yyyy-mm-dd"
-//    }).on('changeDate', function(ev){
-//        if(ev.date){
-//            $(endSelector).datepicker('xmkssj', new Date(ev.date.valueOf()))
-//        }else{
-//            $(endSelector).datepicker('xmkssj',null);
-//        }
-//    })
-//    $('#xmjssj').datepicker({
-//          autoclose: true,
-//        todayHighlight: true,
-//        language:"zh-CN",
-//        format:"yyyy-mm-dd"
-//    });
 //    获取业务类型
     getYwlx();
 //    获取项目分类
