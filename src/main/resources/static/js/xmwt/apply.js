@@ -5,23 +5,67 @@ $(document).ready(function(){
         language:"zh-CN",
         format:"yyyy-mm-dd"
     });
-    $('#xmkssj').datepicker({
-          autoclose: true,
-        todayHighlight: true,
-        language:"zh-CN",
-        format:"yyyy-mm-dd"
-    });
-    $('#xmjssj').datepicker({
-          autoclose: true,
-        todayHighlight: true,
-        language:"zh-CN",
-        format:"yyyy-mm-dd"
-    });
+//		日期
+    DatePicker("#xmkssj","#xmjssj");
+//    $('#xmkssj').datepicker({
+//        autoclose: true,
+//        todayHighlight: true,
+//        language:"zh-CN",
+//        format:"yyyy-mm-dd"
+//    }).on('changeDate', function(ev){
+//        if(ev.date){
+//            $(endSelector).datepicker('xmkssj', new Date(ev.date.valueOf()))
+//        }else{
+//            $(endSelector).datepicker('xmkssj',null);
+//        }
+//    })
+//    $('#xmjssj').datepicker({
+//          autoclose: true,
+//        todayHighlight: true,
+//        language:"zh-CN",
+//        format:"yyyy-mm-dd"
+//    });
 //    获取业务类型
     getYwlx();
 //    获取项目分类
     getXmfl();
 });
+function DatePicker(beginSelector,endSelector){
+    // 仅选择日期
+    $(beginSelector).datepicker(
+        {
+            language:  "zh-CN",
+            autoclose: true,
+            startView: 0,
+            format: "yyyy-mm-dd",
+            clearBtn:true,
+            todayBtn:false,
+            endDate:new Date()
+        }).on('changeDate', function(ev){
+            if(ev.date){
+                $(endSelector).datepicker('setStartDate', new Date(ev.date.valueOf()))
+            }else{
+                $(endSelector).datepicker('setStartDate',null);
+            }
+        })
+
+        $(endSelector).datepicker(
+        {
+            language:  "zh-CN",
+            autoclose: true,
+            startView:0,
+            format: "yyyy-mm-dd",
+            clearBtn:true,
+            todayBtn:false,
+            endDate:new Date()
+        }).on('changeDate', function(ev){
+            if(ev.date){
+                $(beginSelector).datepicker('setEndDate', new Date(ev.date.valueOf()))
+            }else{
+                $(beginSelector).datepicker('setEndDate',new Date());
+            }
+        })
+    }
 //获取业务类型
 function getYwlx(){
     $('#ywlx').find('option').remove();
