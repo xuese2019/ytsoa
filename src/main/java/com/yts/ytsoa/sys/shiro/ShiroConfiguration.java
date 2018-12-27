@@ -72,17 +72,17 @@ public class ShiroConfiguration {
         return securityManager;
     }
 
-    @Bean
-    public SessionManager sessionManager() {
-        DefaultSessionManager sessionManager = new DefaultSessionManager();
-        sessionManager.getSessionListeners().add(shiroSessionListener());
-        return sessionManager;
-    }
+//    @Bean
+//    public SessionManager sessionManager() {
+//        DefaultSessionManager sessionManager = new DefaultSessionManager();
+//        sessionManager.getSessionListeners().add(shiroSessionListener());
+//        return sessionManager;
+//    }
 
-    @Bean
-    public ShiroSessionListener shiroSessionListener() {
-        return new ShiroSessionListener();
-    }
+//    @Bean
+//    public ShiroSessionListener shiroSessionListener() {
+//        return new ShiroSessionListener();
+//    }
 
     @Bean
     public MyShiroRealm myShiroRealm() {

@@ -153,7 +153,7 @@ function page(obj){
                             +'<td>'+e.name+'</td>'
                             +'<td>'+e.account+'</td>'
                             +'<td>'+e.sex+'</td>'
-//                            +'<td>'+e.bmid+'</td>'
+                            +'<td>'+e.bmid+'</td>'
                             +'<td>'+e.phone+'</td>'
                             +'<td>'+e.systimes+'</td>'
                             +'<td>'+e.rzrq+'</td>'

@@ -11,6 +11,10 @@ $(document).ready(function(){
     getYwlx();
 //    获取项目分类
     getXmfl();
+//    新增提交
+    $('#xmwt_btn').click(function(index,e){
+
+    });
 });
 function DatePicker(beginSelector,endSelector){
     // 仅选择日期
@@ -21,8 +25,8 @@ function DatePicker(beginSelector,endSelector){
             startView: 0,
             format: "yyyy-mm-dd",
             clearBtn:true,
-            todayBtn:false,
-            endDate:new Date()
+            todayBtn:false
+//            endDate:new Date()
         }).on('changeDate', function(ev){
             if(ev.date){
                 $(endSelector).datepicker('setStartDate', new Date(ev.date.valueOf()))
@@ -38,8 +42,8 @@ function DatePicker(beginSelector,endSelector){
             startView:0,
             format: "yyyy-mm-dd",
             clearBtn:true,
-            todayBtn:false,
-            endDate:new Date()
+            todayBtn:false
+//            endDate:new Date()
         }).on('changeDate', function(ev){
             if(ev.date){
                 $(beginSelector).datepicker('setEndDate', new Date(ev.date.valueOf()))

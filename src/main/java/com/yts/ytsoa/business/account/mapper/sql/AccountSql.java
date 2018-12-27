@@ -30,18 +30,19 @@ public class AccountSql {
     public String findAllSql(@Param("model") AccountModel model) {
         return new SQL() {
             {
-                SELECT("*");
-                FROM("account_table");
+                SELECT("a.*,z.zzjgmc");
+                FROM("account_table a");
+                LEFT_OUTER_JOIN("zzjg_table z on z.uuid = a.bmid");
                 if (model.getAccount() != null && !model.getAccount().isEmpty()) {
                     model.setAccount("%" + model.getAccount() + "%");
-                    WHERE("account like #{model.account}");
+                    WHERE("a.account like #{model.account}");
                 }
                 if (model.getName() != null && !model.getName().isEmpty()) {
                     model.setName("%" + model.getName() + "%");
-                    WHERE("name like #{model.name}");
+                    WHERE("a.name like #{model.name}");
                 }
                 if (model.getUuid() != null && !model.getUuid().isEmpty())
-                    WHERE("uuid=#{model.uuid}");
+                    WHERE("a.uuid=#{model.uuid}");
             }
         }.toString();
     }

@@ -37,6 +37,7 @@ public interface AccountMapper {
     @Results(id = "accountMap", value = {
             @Result(property = "isLogin", column = "is_login"),
             @Result(property = "creatorAccId", column = "creator_acc_id"),
+            @Result(property = "bmid", column = "zzjgmc")
     })
     List<AccountModel> findAll(@Param("model") AccountModel model) throws Exception;
 
