@@ -3,6 +3,7 @@ package com.yts.ytsoa;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yts.ytsoa.utils.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.springframework.jdbc.BadSqlGrammarException;
@@ -49,6 +50,30 @@ public class GlobalExceptionHandler {
         response.setCharacterEncoding("UTF-8");
         PrintWriter pw = response.getWriter();
         pw.write(json);
+    }
+
+    /**
+     * 密码错误
+     *
+     * @param request
+     * @param exception
+     * @return
+     */
+    @ExceptionHandler(value = IncorrectCredentialsException.class)
+    public void incorrectCredentialsException(HttpServletRequest request,
+                                              HttpServletResponse response,
+                                              Exception exception) throws Exception {
+        exception.printStackTrace();
+        log.debug("ERROR::::：" + exception.getLocalizedMessage() + "::::::" + new Date());
+        log.debug("ERROR::::：" + exception.getCause() + "::::::" + new Date());
+        log.debug("ERROR::::：" + Arrays.toString(exception.getSuppressed()) + "::::::" + new Date());
+        log.debug("ERROR::::：" + exception.getMessage() + "::::::" + new Date());
+        log.debug("ERROR::::：" + Arrays.toString(exception.getStackTrace()) + "::::::" + new Date());
+        boolean b = isAjaxRequest(request);
+        if (b)
+            res(response, "账号密码错误");
+        else
+            response.encodeRedirectURL("/error/403");
     }
 
     /**
@@ -262,7 +287,7 @@ public class GlobalExceptionHandler {
         log.debug("ERROR::::：" + Arrays.toString(exception.getStackTrace()) + "::::::" + new Date());
         boolean b = isAjaxRequest(request);
         if (b)
-            res(response, "内部错误");
+            res(response, exception.getMessage());
         else
             response.encodeRedirectURL("/error/500");
     }

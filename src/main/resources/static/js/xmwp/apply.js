@@ -12,8 +12,37 @@ $(document).ready(function(){
 //    获取项目分类
     getXmfl();
 //    新增提交
-    $('#xmwt_btn').click(function(index,e){
-
+    $('#xmwp_btn').click(function(index,e){
+        var obj = $(this);
+        $.ajax({
+            url:path+"/xmwp/xmwp",
+            dataType:"json",
+            async:true,
+            data:$('#xmwp_apply_btn').serialize(),
+            type:"post",
+            cache:false,//关闭缓存
+            ifModified :true,//关闭缓存
+            beforeSend:function(){
+                //请求前的处理
+                $(obj).addClass("disabled");
+            },
+            success:function(req){
+                //请求成功时处理
+                if(!req.success)
+                    alert(req.message);
+                else{
+                    $('#xmwp_apply_btn')[0].reset()
+                }
+            },
+            complete:function(){
+                //请求完成的处理
+                $(obj).removeClass("disabled");
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+                //请求出错处理
+                alert(textStatus);
+            }
+        });
     });
 });
 function DatePicker(beginSelector,endSelector){
@@ -190,4 +219,54 @@ function apply_zzjg_select(){
 function apply_zzjg_sel_btn(a,b){
     $('#cjbmid').val(a);
     $('#cjbmtext').val(b);
+    $('#cjrid').val('');
+    $('#cjrtext').val('');
+}
+//    选择承接人弹窗
+function apply_account_select(){
+    if($('#cjbmid').val() == ''){
+        alert('请先选择承接部门');
+        return false;
+    }
+    $('#apply_account_select_model_btn').click();
+    $('#account_table_data').find('tr').remove();
+    $.ajax({
+        url:path+"/account/bmid/"+$('#cjbmid').val(),
+        dataType:"json",
+        async:true,
+        data:$('#yggl_ser_form').serialize(),
+        type:"get",
+        cache:false,//关闭缓存
+        ifModified :true,//关闭缓存
+        beforeSend:function(){
+            //请求前的处理
+        },
+        success:function(req){
+            //请求成功时处理
+            if(req.success){
+                $(req.data).each(function(index,e){
+                    var tr = '<tr>'
+                            +'<td>'+(index+1)+'</td>'
+                            +'<td>'+e.name+'</td>'
+                            +'<td>'+e.bmid+'</td>'
+                            +'<td>'
+                            +'<input type="button" class="btn btn-info btn-xs" value="选择" onclick="apply_account_select_add(\''+e.uuid+'\',\''+e.name+'\')">'
+                            +'</td>'
+                            +'</tr>';
+                    $('#account_table_data').append(tr);
+                });
+            }
+        },
+        complete:function(){
+            //请求完成的处理
+        },
+        error:function(XMLHttpRequest, textStatus, errorThrown){
+            //请求出错处理
+        }
+    });
+}
+//选择承接人
+function apply_account_select_add(a,b){
+    $('#cjrid').val(a);
+    $('#cjrtext').val(b);
 }

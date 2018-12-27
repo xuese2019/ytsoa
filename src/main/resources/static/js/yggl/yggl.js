@@ -12,38 +12,44 @@ $(document).ready(function(){
         language:"zh-CN",
         format:"yyyy-mm-dd"
     });
+    $('#yggl_add_model_btn').click(function(){
+        $('#yggl_add_form').find('input[name=uuid]').val('');
+        $('#yggl_model_btn').click();
+    });
     $('#yggl_add_btn').click(function(){
         var obj = $(this);
-            $.ajax({
-                url:path+"/account/account",
-                dataType:"json",
-                async:true,
-                data:$('#yggl_add_form').serialize(),
-                type:"post",
-                cache:false,//关闭缓存
-                ifModified :true,//关闭缓存
-                beforeSend:function(){
-                    //请求前的处理
-                    $(obj).addClass("disabled");
-                },
-                success:function(req){
-                    //请求成功时处理
-                    if(!req.success)
-                        $('#errors').text(req.message);
-                    else{
-                        $('#yggl_add_form')[0].reset();
-                        $('#yggl_add_close').click();
-                    }
-                },
-                complete:function(){
-                    //请求完成的处理
-                    $(obj).removeClass("disabled");
-                },
-                error:function(){
-                    //请求出错处理
-                    $('#errors').text("未知错误");
+        $.ajax({
+            url:path+"/account/account",
+            dataType:"json",
+            async:true,
+            data:$('#yggl_add_form').serialize(),
+            type:"post",
+            cache:false,//关闭缓存
+            ifModified :true,//关闭缓存
+            beforeSend:function(){
+                //请求前的处理
+                $(obj).addClass("disabled");
+            },
+            success:function(req){
+                //请求成功时处理
+                if(!req.success)
+                    $('#errors').text(req.message);
+                else{
+                    $('#yggl_add_form')[0].reset();
+                    $('#yggl_add_close').click();
+                    yggl_page = 1;
+                    page($('#yggl_ser'));
                 }
-            });
+            },
+            complete:function(){
+                //请求完成的处理
+                $(obj).removeClass("disabled");
+            },
+            error:function(){
+                //请求出错处理
+                $('#errors').text("未知错误");
+            }
+        });
     });
 });
 //递归
@@ -196,4 +202,72 @@ function pageHelp(obj){
 function click_page(o){
     yggl_page = o;
     page($('#yggl_ser'));
+}
+//删除
+function yggl_delete(o){
+    var con = confirm("是否确定删除?");
+        if(con){
+            $.ajax({
+                url:path+"/account/account/"+o,
+                dataType:"json",
+                async:true,
+                type:"delete",
+                cache:false,//关闭缓存
+                ifModified :true,//关闭缓存
+                beforeSend:function(){
+                    //请求前的处理
+                },
+                success:function(req){
+                    //请求成功时处理
+                    if(!req.success)
+                        alert(req.message);
+                    else{
+                        page($('#yggl_ser'));
+                    }
+                },
+                complete:function(){
+                    //请求完成的处理
+                },
+                error:function(){
+                    //请求出错处理
+                    alert("未知错误");
+                }
+            });
+        }
+}
+//修改
+function yggl_update(o){
+    $.ajax({
+        url:path+"/account/account/"+o,
+        dataType:"json",
+        async:true,
+        type:"get",
+        cache:false,//关闭缓存
+        ifModified :true,//关闭缓存
+        beforeSend:function(){
+            //请求前的处理
+        },
+        success:function(req){
+            //请求成功时处理
+            if(req.success){
+                $('#yggl_model_btn').click();
+                $('#yggl_add_form').find('input[name=uuid]').val(o);
+                $('#yggl_add_form').find('input[name=name]').val(req.data.name);
+                $('#yggl_add_form').find('input[name=account]').val(req.data.account);
+                $('#yggl_add_form').find('input[name=account]').css('readonly','readonly');
+                $('#yggl_add_form').find('select[name=sex]').val(req.data.sex);
+                $('#yggl_add_form').find('input[name=phone]').val(req.data.phone);
+                $('#yggl_add_form').find('input[name=rzrq]').val(req.data.rzrq);
+                $('#yggl_add_form').find('select[name=isLogin]').val(req.data.isLogin);
+                $('#bmidtext').val(req.data.bmid);
+            }
+        },
+        complete:function(){
+            //请求完成的处理
+        },
+        error:function(){
+            //请求出错处理
+            alert("未知错误");
+        }
+    });
 }

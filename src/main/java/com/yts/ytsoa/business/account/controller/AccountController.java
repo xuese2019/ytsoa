@@ -46,6 +46,14 @@ public class AccountController {
     }
 
     @RequiresAuthentication
+    @RequestMapping(value = "/bmid/{bmid}", method = RequestMethod.GET)
+    public ResponseResult<List<AccountModel>> findAll(@PathVariable("bmid") String bmid) throws Exception {
+        AccountModel model = new AccountModel();
+        model.setBmid(bmid);
+        return service.findAll(model);
+    }
+
+    @RequiresAuthentication
     @RequestMapping(value = "/account/{uuid}", method = RequestMethod.GET)
     public ResponseResult<AccountModel> getById(@PathVariable("uuid") String uuid) throws Exception {
         AccountModel model = new AccountModel();
@@ -61,14 +69,19 @@ public class AccountController {
                                             BindingResult result) throws Exception {
         if (result.hasErrors())
             return new ResponseResult<>(false, result.getAllErrors().get(0).getDefaultMessage(), null);
-        model.setSystimes(new Timestamp(System.currentTimeMillis()));
-        //对密码进行 md5 加密
-        String md5Password = DigestUtils.md5DigestAsHex(model.getPassword().getBytes(StandardCharsets.UTF_8));
-        model.setPassword(md5Password);
-        AccountModel user = (AccountModel) SecurityUtils.getSubject().getPrincipal();
-        model.setCreatorAccId(user.getUuid());
-        model.setLx(1);
-        return service.add(model);
+        if (model.getUuid() == null || model.getUuid().isEmpty()) {
+            model.setSystimes(new Timestamp(System.currentTimeMillis()));
+            //对密码进行 md5 加密
+            String md5Password = DigestUtils.md5DigestAsHex(model.getPassword().getBytes(StandardCharsets.UTF_8));
+            model.setPassword(md5Password);
+            AccountModel user = (AccountModel) SecurityUtils.getSubject().getPrincipal();
+            model.setCreatorAccId(user.getUuid());
+            model.setLx(1);
+            return service.add(model);
+        }
+        model.setAccount(null);
+        model.setPassword(null);
+        return service.updateById(model);
     }
 
     @RequiresAuthentication
@@ -80,6 +93,8 @@ public class AccountController {
     @RequiresAuthentication
     @RequestMapping(value = "/account", method = RequestMethod.PUT)
     public ResponseResult<AccountModel> updateById(@ModelAttribute("form") AccountModel model) throws Exception {
+        model.setAccount(null);
+        model.setPassword(null);
         return service.updateById(model);
     }
 

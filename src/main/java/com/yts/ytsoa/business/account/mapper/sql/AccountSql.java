@@ -18,8 +18,16 @@ public class AccountSql {
                 UPDATE("account_table");
                 if (model.getPassword() != null && !model.getPassword().isEmpty())
                     SET("password=#{model.password}");
+                if (model.getName() != null && !model.getName().isEmpty())
+                    SET("name=#{model.name}");
+                if (model.getSex() != null && !model.getSex().isEmpty())
+                    SET("sex=#{model.sex}");
                 if (model.getBmid() != null && !model.getBmid().isEmpty())
                     SET("bmid=#{model.bmid}");
+                if (model.getPhone() != null && !model.getPhone().isEmpty())
+                    SET("phone=#{model.phone}");
+                if (model.getRzrq() != null)
+                    SET("rzrq=#{model.rzrq}");
                 if (model.getIsLogin() != null && !model.getIsLogin().isEmpty())
                     SET("is_login = #{model.isLogin}");
                 WHERE("uuid = #{model.uuid}");
@@ -43,6 +51,8 @@ public class AccountSql {
                 }
                 if (model.getUuid() != null && !model.getUuid().isEmpty())
                     WHERE("a.uuid=#{model.uuid}");
+                if (model.getBmid() != null && !model.getBmid().isEmpty())
+                    WHERE("a.bmid=#{model.bmid}");
             }
         }.toString();
     }

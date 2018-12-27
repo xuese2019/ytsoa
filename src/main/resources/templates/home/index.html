@@ -180,41 +180,40 @@
                                </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li shiro:hasAnyRoles="xmwpglPage">
-                            <a href="javascript:toPage('/views/xmwt/xmwt');"><i
+                        <li shiro:hasAnyRoles="xmwpPage">
+                            <a href="javascript:toPage('/views/xmwp/xmwp');"><i
                                     class="fa fa-link"></i> <span>项目委派管理</span></a>
                         </li>
                         <li shiro:hasAnyRoles="xmwpApply">
-                            <a href="javascript:toPage('/views/xmwt/apply');"><i
+                            <a href="javascript:toPage('/views/xmwp/apply');"><i
                                     class="fa fa-link"></i> <span>项目委派</span></a>
                         </li>
                     </ul>
                 </li>
-                <li class="treeview" shiro:hasAnyRoles="xmcjgl">
+                <li class="treeview" shiro:hasAnyRoles="xmgl">
                     <a href="#">
-                        <i class="fa  fa-briefcase"></i> <span>项目承接管理</span>
+                        <i class="fa  fa-briefcase"></i> <span>项目管理</span>
                         <span class="pull-right-container">
                                  <i class="fa fa-angle-left pull-right"></i>
                                </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li>
-                            <a href="javascript:$('#index_home_right').attr('src','project-manage.html');"><i
+                        <li shiro:hasAnyRoles="xmktPage">
+                            <a href="javascript:toPage('/views/xmkt/xmkt');">
+                                <i class="fa fa-circle-o"></i>
+                                <!--项目看台-->
+                                我的项目
+                            </a>
+                        </li>
+                        <li shiro:hasAnyRoles="xmglPage">
+                            <a href="javascript:toPage('/views/xmgl/xmgl');"><i
                                     class="fa fa-circle-o"></i> 项目管理</a>
                         </li>
-                        <li>
-                            <a href="javascript:$('#index_home_right').attr('src','project_start.html');"><i
-                                    class="fa fa-circle-o"></i> 项目承接</a>
-                        </li>
-                        <li>
-                            <a href="javascript:$('#index_home_right').attr('src','project-stand.html');"><i
-                                    class="fa fa-circle-o"></i> 项目看台</a>
-                        </li>
-                        <li>
+                        <li shiro:hasAnyRoles="xmglSh">
                             <a href="javascript:$('#index_home_right').attr('src','project_exam.html');"><i
                                     class="fa fa-circle-o"></i> 项目审核</a>
                         </li>
-                        <li>
+                        <li shiro:hasAnyRoles="xmglYq">
                             <a href="javascript:$('#index_home_right').attr('src','project_delay.html');"><i
                                     class="fa fa-circle-o"></i> 项目延期</a>
                         </li>

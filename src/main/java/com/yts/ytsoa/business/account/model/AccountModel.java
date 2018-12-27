@@ -65,7 +65,7 @@ public class AccountModel implements Serializable {
     //    性别
     private String sex;
     //    电话
-    @Length(min = 11, max = 11, message = "电话长度为11位")
+    @Length(max = 11, message = "电话长度为11位")
     private String phone;
 
 }

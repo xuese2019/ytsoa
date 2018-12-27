@@ -1,0 +1,127 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title">项目委派管理</h3>
+                <form class="form-horizontal pull-right" id="xmwp_ser_form">
+                    <input type="button" class="btn btn-info pull-right" value="查询" id="xmwp_ser">
+                    <input type="text" class="form-control pull-right" name="xmmc" placeholder="项目名称"
+                           style="width:180px;">
+                </form>
+                <div style="display:none;">
+                    <div id="xmwp_shiro_del" shiro:hasAnyPermissions="xmwpDelete"></div>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th style="width: 10px">#</th>
+                        <th>项目名称</th>
+                        <th>委托方</th>
+                        <th>委托时间</th>
+                        <th>被审计单位</th>
+                        <th>风险评估</th>
+                        <th>业务类型</th>
+                        <th>项目分类</th>
+                        <th>承接部门</th>
+                        <th>承接人</th>
+                        <th>项目开始时间</th>
+                        <th>项目结束时间</th>
+                        <th>预计收费</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="xmwp_table_data">
+                    </tbody>
+                </table>
+            </div>
+            <div class="box-footer clearfix">
+                <ul class="pagination pull-right" id="page_help">
+                    <li class="paginate_button previous disabled">
+                        <a href="#">总页数</a>
+                    </li>
+                    <li class="paginate_button previous disabled">
+                        <a href="#" id="page_pages">0</a>
+                    </li>
+                    <li class="paginate_button previous disabled">
+                        <a href="#">总条数</a>
+                    </li>
+                    <li class="paginate_button previous disabled">
+                        <a href="#" id="page_total">0</a>
+                    </li>
+                    <li class="paginate_button previous disabled">
+                        <a href="#" style="background-color:#ccc;">&nbsp;</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- /.box -->
+    </div>
+    <!-- /.col -->
+</div>
+<div class="modal fade" id="xmwp_add_model">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" id="xmwp_add_close" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">新增项目分类</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="xmwp_add_form">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">项目分类名称</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="xmwpmc">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-8">
+                            <span id="errors"></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <!--<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>-->
+                <input type="button" class="btn btn-primary" value="确定" id="xmwp_add_btn">
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<input type="button" id="xmwp_update_model_btn" data-toggle="modal" data-target="#xmwp_update_model"
+       style="display:none;"/>
+<div class="modal fade" id="xmwp_update_model">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" id="xmwp_update_close" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">修改项目分类</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="xmwp_update_form">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">项目分类名称</label>
+                        <div class="col-sm-8">
+                            <input type="hidden" name="uuid">
+                            <input type="text" class="form-control" name="xmwpmc">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <!--<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>-->
+                <input type="button" class="btn btn-primary" value="确定" id="xmwp_update_btn">
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<script th:src="@{/js/xmwp/xmwp.js}"></script>

@@ -6,6 +6,7 @@ import com.yts.ytsoa.utils.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.subject.Subject;
@@ -47,9 +48,12 @@ public class LoginController {
             subject.getSession().setTimeout(1000 * 60 * 60 * 12);
             AccountModel model1 = (AccountModel) SecurityUtils.getSubject().getPrincipal();
             model1.setPassword(null);
-        } catch (AuthenticationException e) {
+        } catch (IncorrectCredentialsException e) {
             token.clear();
-            return new ResponseResult<>(false, "账号或密码错误", null);
+            return new ResponseResult<>(false, "账号密码错误");
+        } catch (AuthenticationException e1) {
+            token.clear();
+            return new ResponseResult<>(false, e1.getMessage());
         }
         return new ResponseResult<>(true, "成功", "/views/home/index");
     }

@@ -83,7 +83,7 @@ public class MyShiroRealm extends AuthorizingRealm {
             else
                 throw new AuthenticationException("当前账户禁止登陆!");
         } catch (Exception e) {
-            throw new AuthenticationException("内部错误!");
+            throw new AuthenticationException(e.getMessage());
         }
     }
 }
