@@ -75,13 +75,13 @@ function page(obj){
                             +'<td>'+e.xmfl+'</td>'
                             +'<td>'+e.cjbm+'</td>'
                             +'<td>'+e.cjr+'</td>'
-                            +'<td>'+e.qrwcshr+'</td>'
+//                            +'<td>'+e.qrwcshr+'</td>'
                             +'<td>'+e.xmkssj+'</td>'
                             +'<td>'+e.xmjssj+'</td>'
                             +'<td>'+e.yjsf+'</td>'
                             +'<td>'
                             +(e.xmFlag == 0 ? '未承接' : '')
-                            +(e.xmFlag == 1 ? '已承接' : '')
+                            +(e.xmFlag == 1 ? '已承接,进行中...' : '')
                             +(e.xmFlag == 2 ? '已完成需确认' : '')
                             +(e.xmFlag == 3 ? '已确认完成' : '')
                             +'</td>'
