@@ -41,6 +41,14 @@ public class XmktController {
         return service.updateById(model);
     }
 
+    /**
+     * 我承接的项目
+     *
+     * @param pageNow
+     * @param model
+     * @return
+     * @throws Exception
+     */
     @RequiresAuthentication
     @RequiresPermissions(value = {"xmktPage"})
     @RequestMapping(value = "/xmkt/{pageNow}", method = RequestMethod.GET)
@@ -48,7 +56,27 @@ public class XmktController {
                                                        @ModelAttribute("form") XmglModel model) throws Exception {
         AccountModel user = (AccountModel) SecurityUtils.getSubject().getPrincipal();
         model.setCjr(user.getUuid());
+//        model.setQrwcshr(user.getUuid());
+        return service.findAll(pageNow, pageSize, model);
+    }
+
+    /**
+     * 我审核的项目
+     *
+     * @param pageNow
+     * @param model
+     * @return
+     * @throws Exception
+     */
+    @RequiresAuthentication
+    @RequiresPermissions(value = {"xmshPage"})
+    @RequestMapping(value = "/xmsh/{pageNow}", method = RequestMethod.GET)
+    public ResponseResult<PageInfo<XmglModel>> findAllSh(@PathVariable("pageNow") int pageNow,
+                                                         @ModelAttribute("form") XmglModel model) throws Exception {
+        AccountModel user = (AccountModel) SecurityUtils.getSubject().getPrincipal();
+//        model.setCjr(user.getUuid());
         model.setQrwcshr(user.getUuid());
+        model.setXmFlag(3);
         return service.findAll(pageNow, pageSize, model);
     }
 

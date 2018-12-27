@@ -52,7 +52,6 @@ public interface XmglMapper {
     @Select({
             "select * from" + table + " where uuid = #{id}"
     })
-    @ResultMap(value = "xmglMap")
     XmglModel getById(@Param("id") String id) throws Exception;
 
 }

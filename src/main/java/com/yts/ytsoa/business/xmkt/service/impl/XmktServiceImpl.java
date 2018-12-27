@@ -23,8 +23,8 @@ public class XmktServiceImpl implements XmktService {
         if (one == null)
             return new ResponseResult<>(false, "失败，该项目已不存在");
         AccountModel model = (AccountModel) SecurityUtils.getSubject().getPrincipal();
-        if (one.getCjr().equals(model.getUuid()))
-            return new ResponseResult<>(false, "失败，该项目已承接人已更换");
+        if (!one.getCjr().equals(model.getUuid()))
+            return new ResponseResult<>(false, "失败，该项目承接人已更换");
         one.setXmFlag(1);
         mapper.updateById(one);
         return new ResponseResult<>(true, "成功");

@@ -6,47 +6,12 @@ $(document).ready(function(){
         xmkt_page = 1;
         page(this);
     });
-//    修改
-    $('#xmkt_update_btn').click(function(){
-        var obj = $(this);
-        $.ajax({
-            url:path+"/xmkt/xmkt",
-            dataType:"json",
-            async:true,
-            data:$('#xmkt_update_form').serialize(),
-            type:"put",
-            cache:false,//关闭缓存
-            ifModified :true,//关闭缓存
-            beforeSend:function(){
-                //请求前的处理
-                $(obj).addClass("disabled");
-            },
-            success:function(req){
-                //请求成功时处理
-                if(!req.success)
-                    alert(req.message);
-                else{
-                    $('#xmkt_update_form')[0].reset();
-                    $('#xmkt_update_close').click();
-                    page($('#xmkt_ser'));
-                }
-            },
-            complete:function(){
-                //请求完成的处理
-                $(obj).removeClass("disabled");
-            },
-            error:function(XMLHttpRequest, textStatus, errorThrown){
-                //请求出错处理
-                alert(textStatus);
-            }
-        });
-    });
 });
 //条件分页查询
 function page(obj){
     $('#xmkt_table_data').find('tr').remove();
     $.ajax({
-        url:path+"/xmkt/xmkt/"+Number(xmkt_page),
+        url:path+"/xmkt/xmsh/"+Number(xmkt_page),
         dataType:"json",
         async:true,
         data:$('#xmkt_ser_form').serialize(),
@@ -61,9 +26,6 @@ function page(obj){
             //请求成功时处理
             if(req.success){
                 $(req.data.list).each(function(index,e){
-                    var del = ''
-                    if($('#xmkt_shiro_del').length > 0)
-                        del = '<input type="button" class="btn btn-danger btn-xs" value="删除" onclick="xmkt_delete(\''+e.uuid+'\')">&nbsp;';
                     var tr = '<tr>'
                             +'<td>'+(index+1)+'</td>'
                             +'<td>'+e.xmmc+'</td>'
@@ -80,17 +42,8 @@ function page(obj){
                             +'<td>'+e.xmjssj+'</td>'
                             +'<td>'+e.yjsf+'</td>'
                             +'<td>'
-                            +(e.xmFlag == 0 ? '未承接' : '')
-                            +(e.xmFlag == 1 ? '已承接' : '')
-                            +(e.xmFlag == 2 ? '已完成需确认' : '')
-                            +(e.xmFlag == 3 ? '已确认完成' : '')
-                            +'</td>'
-                            +'<td>'
-                            + del
 //                            +'<input type="button" class="btn btn-info btn-xs" value="修改" onclick="xmkt_update(\''+e.uuid+'\')">&nbsp;'
-                            + ((e.xmFlag == 0 && $('#xmkt_shiro_cjxm').length > 0) ? '<input type="button" class="btn btn-info btn-xs" value="承接" onclick="xmkt_cjxm(\''+e.uuid+'\')">&nbsp;' : '')
-                            + (e.xmFlag == 1 ? '<input type="button" class="btn btn-info btn-xs" value="确认">&nbsp;' : '')
-                            + (e.xmFlag == 2 ? '<input type="button" class="btn btn-info btn-xs" value="审核">&nbsp;' : '')
+                            + ((e.xmFlag == 3 && $('#xmkt_shiro_shxm').length > 0) ? '<input type="button" class="btn btn-info btn-xs" value="审核" onclick="xmkt_cjxm(\''+e.uuid+'\')">&nbsp;' : '')
                             +'</td>'
                             +'</tr>';
                     $('#xmkt_table_data').append(tr);
