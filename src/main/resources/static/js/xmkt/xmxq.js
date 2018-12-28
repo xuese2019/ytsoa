@@ -39,6 +39,7 @@ function getXmJcXx(o){
                 alert(req.message);
             else{
                 $('#xmmc').val(req.data.xmmc);
+                document.title = req.data.xmmc;
                 $('#wtf').val(req.data.wtf);
                 $('#wtsj').val(req.data.wtsj);
                 $('#bsjdw').val(req.data.bsjdw);
