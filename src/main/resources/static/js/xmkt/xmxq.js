@@ -51,6 +51,8 @@ function getXmJcXx(o){
                 $('#xmkssj').val(req.data.xmkssj);
                 $('#xmjssj').val(req.data.xmjssj);
                 $('#yjsf').val(req.data.yjsf);
+                //    设定步骤
+                bsStep(req.data.xmFlag+Number(1));
             }
         },
         complete:function(){
