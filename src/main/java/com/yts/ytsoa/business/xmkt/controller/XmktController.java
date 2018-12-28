@@ -9,6 +9,7 @@ import com.yts.ytsoa.business.xmkt.service.XmktService;
 import com.yts.ytsoa.utils.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,7 +82,7 @@ public class XmktController {
     }
 
     @RequiresAuthentication
-    @RequiresPermissions(value = {"xmktOneId"})
+    @RequiresPermissions(value = {"xmktOneId", "xmktCjxm"}, logical = Logical.OR)
     @RequestMapping(value = "/oneId/{uuid}", method = RequestMethod.GET)
     public ResponseResult<XmglModel> getById(@PathVariable("uuid") String uuid) throws Exception {
         return service.getById(uuid);

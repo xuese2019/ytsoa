@@ -88,7 +88,7 @@ function page(obj){
                             +'<td>'
                             + del
 //                            +'<input type="button" class="btn btn-info btn-xs" value="修改" onclick="xmkt_update(\''+e.uuid+'\')">&nbsp;'
-                            + ((e.xmFlag == 0 && $('#xmkt_shiro_cjxm').length > 0) ? '<input type="button" class="btn btn-info btn-xs" value="承接" onclick="xmkt_cjxm(\''+e.uuid+'\')">&nbsp;' : '')
+                            + ((e.xmFlag == 0 && $('#xmkt_shiro_cjxm').length > 0) ? '<input type="button" class="btn btn-info btn-xs" value="承接" onclick="xmkt_cjxm_model(\''+e.uuid+'\')">&nbsp;' : '')
                             + (e.xmFlag == 1 ? '<input type="button" class="btn btn-info btn-xs" value="确认">&nbsp;' : '')
                             + (e.xmFlag == 2 ? '<input type="button" class="btn btn-info btn-xs" value="审核">&nbsp;' : '')
                             +'</td>'
@@ -189,8 +189,51 @@ function xmkt_update(o){
         }
     });
 }
-//承接项目
-function xmkt_cjxm(o){
+//承接项目弹窗
+function xmkt_cjxm_model(o){
+    $.ajax({
+        url:path+"/xmkt/oneId/"+o,
+        dataType:"json",
+        async:false,
+        type:"get",
+        cache:false,//关闭缓存
+        ifModified :true,//关闭缓存
+        beforeSend:function(){
+            //请求前的处理
+        },
+        success:function(req){
+            //请求成功时处理
+            if(!req.success)
+                alert(req.message);
+            else{
+                $('#xmkt_cjxm_model_btn').click();
+                $('#xmkt_cjxm_form').find('input[name=uuid]').val(o);
+                $('#xmmc').val(req.data.xmmc);
+                $('#wtf').val(req.data.wtf);
+                $('#wtsj').val(req.data.wtsj);
+                $('#bsjdw').val(req.data.bsjdw);
+                $('#fxpg').val(req.data.fxpg);
+                $('#ywlx').val(req.data.ywlx);
+                $('#xmfl').val(req.data.xmfl);
+                $('#cjbm').val(req.data.cjbm);
+                $('#cjr').val(req.data.cjr);
+                $('#xmkssj').val(req.data.xmkssj);
+                $('#xmjssj').val(req.data.xmjssj);
+                $('#yjsf').val(req.data.yjsf);
+            }
+        },
+        complete:function(){
+            //请求完成的处理
+        },
+        error:function(XMLHttpRequest, textStatus, errorThrown){
+            //请求出错处理
+            alert(textStatus);
+        }
+    });
+}
+//承接项目提交
+function xmkt_cjxm_btn(){
+    var o;
     $.ajax({
         url:path+"/xmkt/cjxm/"+o,
         dataType:"json",

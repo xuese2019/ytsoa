@@ -49,9 +49,8 @@ public interface XmglMapper {
     })
     List<XmglModel> findAll(@Param("model") XmglModel model) throws Exception;
 
-    @Select({
-            "select * from" + table + " where uuid = #{id}"
-    })
-    XmglModel getById(@Param("id") String id) throws Exception;
+    @SelectProvider(type = XmglSql.class, method = "getByIdSql")
+    @ResultMap(value = "xmglMap")
+    XmglModel getById(@Param("uuid") String uuid) throws Exception;
 
 }

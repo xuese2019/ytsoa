@@ -50,4 +50,20 @@ public class XmglSql {
         }.toString();
     }
 
+    public String getByIdSql(@Param("uuid") String uuid) {
+        return new SQL() {
+            {
+                SELECT("x.*,y.ywlxmc as ywlx2,xf.xmflmc as xmfl2,z.zzjgmc as cjbm2,a.name as cjr2,acc.name as qrwcshr2," +
+                        "CASE x.fxpg WHEN 1 THEN '低' ELSE (CASE x.fxpg WHEN 2 THEN '中' ELSE '高' END) END AS fxpg2");
+                FROM(table + " x");
+                LEFT_OUTER_JOIN("ywlx_table y on y.uuid = x.ywlx");
+                LEFT_OUTER_JOIN("xmfl_table xf on xf.uuid = x.xmfl");
+                LEFT_OUTER_JOIN("zzjg_table z on z.uuid = x.cjbm");
+                LEFT_OUTER_JOIN("account_table a on a.uuid = x.cjr");
+                LEFT_OUTER_JOIN("account_table acc on acc.uuid = x.qrwcshr");
+                WHERE("x.uuid = #{uuid}");
+            }
+        }.toString();
+    }
+
 }
