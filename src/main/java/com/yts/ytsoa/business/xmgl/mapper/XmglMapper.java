@@ -53,4 +53,7 @@ public interface XmglMapper {
     @ResultMap(value = "xmglMap")
     XmglModel getById(@Param("uuid") String uuid) throws Exception;
 
+    @SelectProvider(type = XmglSql.class, method = "getByIdSql")
+    XmglModel getById2(@Param("uuid") String uuid) throws Exception;
+
 }

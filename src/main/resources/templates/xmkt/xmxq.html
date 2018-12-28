@@ -1,90 +1,67 @@
-<div class="row">
-    <div class="col-xs-12">
-        <div class="box box-danger">
-            <div class="box-header with-border">
-                <h3 class="box-title">项目看台</h3>
-                <form class="form-horizontal pull-right" id="xmkt_ser_form">
-                    <input type="button" class="btn btn-info pull-right" value="查询" id="xmkt_ser">
-                    <input type="text" class="form-control pull-right" name="xmmc" placeholder="项目名称"
-                           style="width:180px;">
-                </form>
-                <div style="display:none;">
-                    <div id="xmkt_shiro_cjxm" shiro:hasAnyPermissions="xmktCjxm"></div>
+<!DOCTYPE html>
+<html lang="cn"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>项目详情</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+    <meta name="context-path" content="@{/}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}"/>
+    <!-- Ionicons -->
+    <link rel="stylesheet" th:href="@{/css/ionicons.min.css}"/>
+    <!-- Theme style -->
+    <link rel="stylesheet" th:href="@{/css/AdminLTE.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/skins/skin-red.min.css}"/>
+
+    <!-- Google Font -->
+    <link rel="stylesheet" th:href="@{/css/googleapis.css}"/>
+    <!--<link rel="stylesheet" th:href="@{/css/input.css}"/>-->
+    <link rel="stylesheet" th:href="@{/css/bootstrap-datepicker.min.css}">
+    <!-- jQuery 3 -->
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <!-- AdminLTE App -->
+    <script th:src="@{/js/bootstrap-treeview.js}"></script>
+    <script th:src="@{/js/adminlte.min.js}"></script>
+    <!-- bootstrap datepicker -->
+    <script th:src="@{/js/bootstrap-datepicker.min.js}"></script>
+    <script th:src="@{/js/bootstrap-datepicker.zh-CN.min.js}"></script>
+    <script th:src="@{/js/home/path.js}"></script>
+</head>
+<body class="hold-transition skin-red sidebar-mini">
+<div>
+    <div class="row">
+        <!-- left column -->
+        <!-- right column -->
+        <div class="col-md-12">
+            <!-- Horizontal Form -->
+            <div class="box box-danger">
+                <div class="box-header with-border">
+                    <button type="button" class="btn bg-maroon btn-flat margin xmxqxxqh" data_id="jbxx">基本属性</button>
+                    <button type="button" class="btn bg-maroon btn-flat margin xmxqxxqh" data_id="ryxx">人员信息</button>
+                    <button type="button" class="btn bg-maroon btn-flat margin xmxqxxqh" data_id="xmrb">项目日报</button>
+                    <button type="button" class="btn bg-maroon btn-flat margin xmxqxxqh" data_id="gzzl">工作指令</button>
+                    <button type="button" class="btn bg-maroon btn-flat margin xmxqxxqh" data_id="rgtc">人工统筹</button>
+                    <button type="button" class="btn bg-maroon btn-flat margin xmxqxxqh" data_id="yzgl">用章管理</button>
+                    <button type="button" class="btn bg-maroon btn-flat margin xmxqxxqh" data_id="cwgl">财务管理</button>
+                    <button type="button" class="btn bg-maroon btn-flat margin xmxqxxqh" data_id="xmjd">项目进度</button>
                 </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body no-padding">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th style="width: 10px">#</th>
-                        <th>项目名称</th>
-                        <th>委托方</th>
-                        <th>委托时间</th>
-                        <th>被审计单位</th>
-                        <th>风险评估</th>
-                        <th>业务类型</th>
-                        <th>项目分类</th>
-                        <th>承接部门</th>
-                        <th>承接人</th>
-                        <!--<th>项目完成确认人</th>-->
-                        <th>项目开始时间</th>
-                        <th>项目结束时间</th>
-                        <th>预计收费</th>
-                        <th>项目状态</th>
-                        <th>操作</th>
-                    </tr>
-                    </thead>
-                    <tbody id="xmkt_table_data">
-                    </tbody>
-                </table>
-            </div>
-            <div class="box-footer clearfix">
-                <ul class="pagination pull-right" id="page_help">
-                    <li class="paginate_button previous disabled">
-                        <a href="#">总页数</a>
-                    </li>
-                    <li class="paginate_button previous disabled">
-                        <a href="#" id="page_pages">0</a>
-                    </li>
-                    <li class="paginate_button previous disabled">
-                        <a href="#">总条数</a>
-                    </li>
-                    <li class="paginate_button previous disabled">
-                        <a href="#" id="page_total">0</a>
-                    </li>
-                    <li class="paginate_button previous disabled">
-                        <a href="#" style="background-color:#ccc;">&nbsp;</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-- /.box -->
-    </div>
-    <!-- /.col -->
-</div>
-<input type="button" id="xmkt_cjxm_model_btn" data-toggle="modal" data-target="#xmkt_cjxm_model"
-       style="display:none;"/>
-<div class="modal fade" id="xmkt_cjxm_model">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" id="xmkt_cjxm_close" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">承接项目</h4>
-            </div>
-            <div class="modal-body">
-                <form class="form-horizontal" id="xmkt_cjxm_form">
-                    <div class="box-body">
-                        <div class="row">
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form class="form-horizontal">
+                    <div class="box-body" id="xmxqxxqh">
+                        <div class="row" id="jbxx">
                             <div class="col-sm-12">
-                                <div class="form-group">
-                                    <label class="control-label">项目基础信息</label>
-                                </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">项目名称</label>
                                     <div class="col-sm-8">
-                                        <input type="hidden" class="form-control" name="uuid">
+                                        <span style="display:none;" id="uuid"></span>
                                         <input type="text" class="form-control" id="xmmc" readonly="readonly">
                                     </div>
                                 </div>
@@ -213,17 +190,49 @@
                             <!--</div>-->
                             <!--</div>-->
                         </div>
+                        <div class="row" id="ryxx" style="display:none;">
+                            <div class="col-sm-12">
+                                人员信息
+                            </div>
+                        </div>
+                        <div class="row" id="xmrb" style="display:none;">
+                            <div class="col-sm-12">
+                                项目日报
+                            </div>
+                        </div>
+                        <div class="row" id="gzzl" style="display:none;">
+                            <div class="col-sm-12">
+                                工作指令
+                            </div>
+                        </div>
+                        <div class="row" id="rgtc" style="display:none;">
+                            <div class="col-sm-12">
+                                人工统筹
+                            </div>
+                        </div>
+                        <div class="row" id="yzgl" style="display:none;">
+                            <div class="col-sm-12">
+                                用章管理
+                            </div>
+                        </div>
+                        <div class="row" id="cwgl" style="display:none;">
+                            <div class="col-sm-12">
+                                财务管理
+                            </div>
+                        </div>
+                        <div class="row" id="xmjd" style="display:none;">
+                            <div class="col-sm-12">
+                                项目进度
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <!--<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>-->
-                <input type="button" class="btn btn-primary" value="下一步" onclick="xmkt_cjxm_select_people_model()">
-            </div>
+            <!-- /.box -->
         </div>
-        <!-- /.modal-content -->
+        <!--/.col (right) -->
     </div>
-    <!-- /.modal-dialog -->
+    <script th:src="@{/js/xmkt/xmxq.js}"></script>
 </div>
-<!-- /.modal -->
-<script th:src="@{/js/xmkt/xmkt.js}"></script>
+</body>
+</html>

@@ -19,7 +19,7 @@ public class XmktServiceImpl implements XmktService {
 
     @Override
     public ResponseResult<XmglModel> cjxm(String uuid) throws Exception {
-        XmglModel one = mapper.getById(uuid);
+        XmglModel one = mapper.getById2(uuid);
         if (one == null)
             return new ResponseResult<>(false, "失败，该项目已不存在");
         AccountModel model = (AccountModel) SecurityUtils.getSubject().getPrincipal();
