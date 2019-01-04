@@ -126,3 +126,177 @@
 2019-01-04 09:22:05.213 DEBUG 13200 --- [http-nio-9002-exec-7] c.y.y.b.a.mapper.AccountMapper.findAll   : ==>  Preparing: SELECT a.*,z.zzjgmc FROM account_table a LEFT OUTER JOIN zzjg_table z on z.uuid = a.bmid LIMIT ? 
 2019-01-04 09:22:05.214 DEBUG 13200 --- [http-nio-9002-exec-7] c.y.y.b.a.mapper.AccountMapper.findAll   : ==> Parameters: 15(Integer)
 2019-01-04 09:22:05.218 DEBUG 13200 --- [http-nio-9002-exec-7] c.y.y.b.a.mapper.AccountMapper.findAll   : <==      Total: 3
+2019-01-04 09:26:17.303 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:17.304 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:17.307 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:17.308 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:17.308 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:17.312 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:17.317 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:17.318 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:17.320 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:17.321 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:17.322 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:17.325 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:17.326 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:17.326 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:17.330 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:17.331 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:17.331 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:17.333 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:17.334 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:17.335 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:17.337 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:17.338 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:17.339 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:17.341 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:17.342 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:17.343 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:17.346 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:17.347 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:17.348 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:17.350 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:17.351 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:17.351 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:17.355 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:17.356 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:17.356 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:17.360 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:17.363 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:17.363 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:17.366 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:17.367 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:17.368 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:17.370 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:17.371 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:17.371 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:17.374 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:17.375 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:17.376 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:17.378 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:17.380 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:17.380 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:17.382 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:17.383 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:17.384 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:17.390 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:17.390 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:17.391 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:17.393 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:17.395 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:17.395 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:17.403 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:17.404 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:17.405 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:17.406 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:17.407 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:17.408 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:17.410 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:17.411 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:17.412 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:17.414 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:17.415 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:17.415 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:17.417 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:21.296 DEBUG 13200 --- [http-nio-9002-exec-7] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:21.297 DEBUG 13200 --- [http-nio-9002-exec-7] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:21.298 DEBUG 13200 --- [http-nio-9002-exec-7] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:21.299 DEBUG 13200 --- [http-nio-9002-exec-7] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:21.300 DEBUG 13200 --- [http-nio-9002-exec-7] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:21.304 DEBUG 13200 --- [http-nio-9002-exec-7] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:21.305 DEBUG 13200 --- [http-nio-9002-exec-7] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:21.305 DEBUG 13200 --- [http-nio-9002-exec-7] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:21.307 DEBUG 13200 --- [http-nio-9002-exec-7] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:21.335 DEBUG 13200 --- [http-nio-9002-exec-1] c.y.y.b.a.m.AccountMapper.findAll_COUNT  : ==>  Preparing: SELECT count(0) FROM account_table a LEFT OUTER JOIN zzjg_table z ON z.uuid = a.bmid 
+2019-01-04 09:26:21.335 DEBUG 13200 --- [http-nio-9002-exec-1] c.y.y.b.a.m.AccountMapper.findAll_COUNT  : ==> Parameters: 
+2019-01-04 09:26:21.337 DEBUG 13200 --- [http-nio-9002-exec-1] c.y.y.b.a.m.AccountMapper.findAll_COUNT  : <==      Total: 1
+2019-01-04 09:26:21.337 DEBUG 13200 --- [http-nio-9002-exec-1] c.y.y.b.a.mapper.AccountMapper.findAll   : ==>  Preparing: SELECT a.*,z.zzjgmc FROM account_table a LEFT OUTER JOIN zzjg_table z on z.uuid = a.bmid LIMIT ? 
+2019-01-04 09:26:21.338 DEBUG 13200 --- [http-nio-9002-exec-1] c.y.y.b.a.mapper.AccountMapper.findAll   : ==> Parameters: 15(Integer)
+2019-01-04 09:26:21.341 DEBUG 13200 --- [http-nio-9002-exec-1] c.y.y.b.a.mapper.AccountMapper.findAll   : <==      Total: 3
+2019-01-04 09:26:29.957 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:29.957 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:29.959 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:29.959 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:29.960 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:29.963 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:29.967 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:29.967 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:29.970 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:29.971 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:29.972 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:29.978 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:29.981 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:29.981 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:29.984 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:29.985 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:29.985 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:29.988 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:29.989 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:29.990 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:29.993 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:29.994 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:29.995 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:29.998 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:29.999 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:30.000 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:30.005 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:30.006 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:30.006 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:30.009 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:30.010 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:30.012 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:30.015 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:30.015 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:30.016 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:30.018 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:30.019 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:30.020 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:30.021 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:30.021 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:30.022 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:30.025 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:30.026 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:30.027 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:30.029 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:30.031 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:30.031 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:30.033 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:30.034 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:30.034 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:30.036 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:30.037 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:30.037 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:30.039 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:30.040 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:30.041 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:30.043 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:30.044 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:30.045 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:30.048 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:30.049 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:30.049 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:30.051 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:30.052 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:30.053 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:30.062 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:30.063 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:30.064 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:30.065 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:30.066 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:30.066 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:30.068 DEBUG 13200 --- [http-nio-9002-exec-8] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:33.889 DEBUG 13200 --- [http-nio-9002-exec-10] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:33.889 DEBUG 13200 --- [http-nio-9002-exec-10] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:33.890 DEBUG 13200 --- [http-nio-9002-exec-10] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:33.891 DEBUG 13200 --- [http-nio-9002-exec-10] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:33.891 DEBUG 13200 --- [http-nio-9002-exec-10] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:33.894 DEBUG 13200 --- [http-nio-9002-exec-10] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:33.895 DEBUG 13200 --- [http-nio-9002-exec-10] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==>  Preparing: select q.* from account_table a left join zz_qx_table z on z.zzid = a.bmid left join qxgl_table q on q.uuid = z.qxid where a.uuid = ? 
+2019-01-04 09:26:33.895 DEBUG 13200 --- [http-nio-9002-exec-10] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : ==> Parameters: 14783736098111e9943900269e9c3a5e(String)
+2019-01-04 09:26:33.897 DEBUG 13200 --- [http-nio-9002-exec-10] c.y.y.b.q.mapper.ZzQxMapper.findByAccid  : <==      Total: 14
+2019-01-04 09:26:33.921 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.a.m.AccountMapper.findAll_COUNT  : ==>  Preparing: SELECT count(0) FROM account_table a LEFT OUTER JOIN zzjg_table z ON z.uuid = a.bmid 
+2019-01-04 09:26:33.921 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.a.m.AccountMapper.findAll_COUNT  : ==> Parameters: 
+2019-01-04 09:26:33.923 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.a.m.AccountMapper.findAll_COUNT  : <==      Total: 1
+2019-01-04 09:26:33.923 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.a.mapper.AccountMapper.findAll   : ==>  Preparing: SELECT a.*,z.zzjgmc FROM account_table a LEFT OUTER JOIN zzjg_table z on z.uuid = a.bmid LIMIT ? 
+2019-01-04 09:26:33.923 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.a.mapper.AccountMapper.findAll   : ==> Parameters: 15(Integer)
+2019-01-04 09:26:33.925 DEBUG 13200 --- [http-nio-9002-exec-5] c.y.y.b.a.mapper.AccountMapper.findAll   : <==      Total: 3
