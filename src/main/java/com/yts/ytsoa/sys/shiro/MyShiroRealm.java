@@ -7,6 +7,7 @@ import com.yts.ytsoa.business.qxgl.model.QxglModel;
 import com.yts.ytsoa.business.qxgl.service.ZzQxService;
 import com.yts.ytsoa.utils.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.ShiroException;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -43,6 +44,7 @@ public class MyShiroRealm extends AuthorizingRealm {
             default:
                 info.addRole("user");
         }
+        try {
         ResponseResult<List<QxglModel>> result = zzQxService.findByAccid(model.getUuid());
         if (result.isSuccess()) {
             result.getData().forEach(k -> {
@@ -50,6 +52,9 @@ public class MyShiroRealm extends AuthorizingRealm {
                     info.addRole(k.getQxbs());
                 info.addStringPermission(k.getQxbs());
             });
+        }
+        }catch (Exception e){
+            throw new ShiroException("权限获取异常");
         }
         return info;
     }

@@ -5,6 +5,7 @@ import com.yts.ytsoa.business.account.service.AccountService;
 import com.yts.ytsoa.utils.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.ShiroException;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -54,6 +55,9 @@ public class LoginController {
         } catch (AuthenticationException e1) {
             token.clear();
             return new ResponseResult<>(false, e1.getMessage());
+        }catch (RuntimeException e2){
+            token.clear();
+            return new ResponseResult<>(false, e2.getMessage());
         }
         return new ResponseResult<>(true, "成功", "/views/home/index");
     }
