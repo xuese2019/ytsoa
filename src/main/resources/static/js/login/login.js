@@ -38,11 +38,11 @@ $(document).ready(function(){
             },
             complete:function(){
                 //请求完成的处理
-                $(obj).removeClass("disabled");
             },
             error:function(){
                 //请求出错处理
                 $('#errors').text("未知错误");
+                 $(obj).removeClass("disabled");
             }
         });
     });
