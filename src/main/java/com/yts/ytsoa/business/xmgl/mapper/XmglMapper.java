@@ -4,6 +4,7 @@ import com.yts.ytsoa.business.xmgl.mapper.sql.XmglSql;
 import com.yts.ytsoa.business.xmgl.model.XmglModel;
 import org.apache.ibatis.annotations.*;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -25,17 +26,17 @@ public interface XmglMapper {
                     "#{model.ywlx},#{model.xmfl},#{model.cjbm},#{model.xmkssj},#{model.xmjssj},#{model.yjsf},#{model.xmFlag}," +
                     "#{model.htFlag},#{model.bgFlag},#{model.wkFlag},#{model.gdFlag},#{model.cjr},#{model.qrwcshr},#{model.xmcjsj})"
     })
-    void add(@Param("model") XmglModel model) throws Exception;
+    void add(@Param("model") XmglModel model) throws SQLException;
 
     @Delete({
             "delete from " + table + " where uuid = #{uuid}"
     })
-    void deleteById(@Param("uuid") String uuid) throws Exception;
+    void deleteById(@Param("uuid") String uuid) throws SQLException;
 
     @Update({
             "update " + table + " set xm_flag = #{model.xmFlag} where uuid = #{model.uuid}"
     })
-    void updateById(@Param("model") XmglModel model) throws Exception;
+    void updateById(@Param("model") XmglModel model) throws SQLException;
 
     @SelectProvider(type = XmglSql.class, method = "findAllSql")
     @Results(id = "xmglMap", value = {
@@ -47,13 +48,13 @@ public interface XmglMapper {
             @Result(property = "xmFlag", column = "xm_flag"),
             @Result(property = "fxpg", column = "fxpg2")
     })
-    List<XmglModel> findAll(@Param("model") XmglModel model) throws Exception;
+    List<XmglModel> findAll(@Param("model") XmglModel model) throws SQLException;
 
     @SelectProvider(type = XmglSql.class, method = "getByIdSql")
     @ResultMap(value = "xmglMap")
-    XmglModel getById(@Param("uuid") String uuid) throws Exception;
+    XmglModel getById(@Param("uuid") String uuid) throws SQLException;
 
     @SelectProvider(type = XmglSql.class, method = "getByIdSql")
-    XmglModel getById2(@Param("uuid") String uuid) throws Exception;
+    XmglModel getById2(@Param("uuid") String uuid) throws SQLException;
 
 }

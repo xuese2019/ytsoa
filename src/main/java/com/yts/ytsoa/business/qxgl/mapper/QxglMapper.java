@@ -4,6 +4,7 @@ import com.yts.ytsoa.business.qxgl.model.QxglModel;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -20,6 +21,6 @@ public interface QxglMapper {
     @Select({
             "select * from " + table
     })
-    List<QxglModel> findAll();
+    List<QxglModel> findAll() throws SQLException;
 
 }

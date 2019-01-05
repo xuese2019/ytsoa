@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface ZzQxService {
 
-    ResponseResult<ZzQxModel> setQx(String zzid, List<ZzQxModel> list);
+    ResponseResult<ZzQxModel> setQx(String zzid, List<ZzQxModel> list) throws Exception;
 
-    ResponseResult<List<ZzQxModel>> findByZzid(String zzid);
+    ResponseResult<List<ZzQxModel>> findByZzid(String zzid) throws Exception;
 
-    ResponseResult<List<QxglModel>> findByAccid(String accid);
+    ResponseResult<List<QxglModel>> findByAccid(String accid) throws Exception;
 }

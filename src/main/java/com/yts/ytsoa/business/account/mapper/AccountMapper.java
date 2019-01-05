@@ -5,6 +5,7 @@ import com.yts.ytsoa.business.account.model.AccountModel;
 import com.yts.ytsoa.business.account.model.AdminModel;
 import org.apache.ibatis.annotations.*;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -23,15 +24,15 @@ public interface AccountMapper {
                     " values (replace(uuid(), '-', ''),#{model.name},#{model.account},#{model.password},#{model.lx},#{model.bmid}," +
                     "#{model.isLogin},#{model.systimes},#{model.rzrq},#{model.creatorAccId},#{model.sex},#{model.phone})"
     })
-    void add(@Param("model") AccountModel model) throws Exception;
+    void add(@Param("model") AccountModel model) throws SQLException;
 
     @Delete({
             "delete from " + table + " where uuid = #{uuid}"
     })
-    void deleteById(@Param("uuid") String uuid) throws Exception;
+    void deleteById(@Param("uuid") String uuid) throws SQLException;
 
     @UpdateProvider(type = AccountSql.class, method = "updateByIdSql")
-    void updateById(@Param("model") AccountModel model) throws Exception;
+    void updateById(@Param("model") AccountModel model) throws SQLException;
 
     @SelectProvider(type = AccountSql.class, method = "findAllSql")
     @Results(id = "accountMap", value = {
@@ -39,22 +40,22 @@ public interface AccountMapper {
             @Result(property = "creatorAccId", column = "creator_acc_id"),
             @Result(property = "bmid", column = "zzjgmc")
     })
-    List<AccountModel> findAll(@Param("model") AccountModel model) throws Exception;
+    List<AccountModel> findAll(@Param("model") AccountModel model) throws SQLException;
 
     @Select({
             "select * from " + table + " where account = #{account}"
     })
-    List<AccountModel> findByAccount(@Param("account") String account) throws Exception;
+    List<AccountModel> findByAccount(@Param("account") String account) throws SQLException;
 
     @Select({
             "select * from account_table a where a.account = #{model.account}"
     })
     @ResultMap(value = "accountMap")
-    List<AccountModel> findByAccountAndPassword(@Param("model") AccountModel model) throws Exception;
+    List<AccountModel> findByAccountAndPassword(@Param("model") AccountModel model) throws SQLException;
 
     @Select({
             "select * from admin_table a where a.account = #{model.account}"
     })
-    AccountModel getAdminByAccount(@Param("model") AdminModel model) throws Exception;
+    AccountModel getAdminByAccount(@Param("model") AdminModel model) throws SQLException;
 
 }

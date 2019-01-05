@@ -20,7 +20,7 @@ public class ZzQxServiceImpl implements ZzQxService {
     private ZzQxMapper mapper;
 
     @Override
-    public ResponseResult<List<ZzQxModel>> findByZzid(String zzid) {
+    public ResponseResult<List<ZzQxModel>> findByZzid(String zzid) throws Exception {
         List<ZzQxModel> list = mapper.findByZzid(zzid);
         if (list.size() > 0)
             return new ResponseResult<>(true, "成功", list);
@@ -28,7 +28,7 @@ public class ZzQxServiceImpl implements ZzQxService {
     }
 
     @Override
-    public ResponseResult<List<QxglModel>> findByAccid(String accid) {
+    public ResponseResult<List<QxglModel>> findByAccid(String accid) throws Exception {
         List<QxglModel> list = mapper.findByAccid(accid);
         if (list.size() > 0 && list.get(0) != null)
             return new ResponseResult<>(true, "成功", list);
@@ -37,7 +37,7 @@ public class ZzQxServiceImpl implements ZzQxService {
 
     @Transactional
     @Override
-    public ResponseResult<ZzQxModel> setQx(String zzid, List<ZzQxModel> list) {
+    public ResponseResult<ZzQxModel> setQx(String zzid, List<ZzQxModel> list) throws Exception {
         mapper.deleteByZzid(zzid);
         if (list != null && list.size() > 0)
             mapper.adds(list);
