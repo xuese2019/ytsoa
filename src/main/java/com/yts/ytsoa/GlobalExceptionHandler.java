@@ -7,6 +7,7 @@ import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.springframework.jdbc.BadSqlGrammarException;
+import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -17,6 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.sql.SQLRecoverableException;
 import java.sql.SQLSyntaxErrorException;
 import java.util.Arrays;
 import java.util.Date;
@@ -50,6 +53,88 @@ public class GlobalExceptionHandler {
         response.setCharacterEncoding("UTF-8");
         PrintWriter pw = response.getWriter();
         pw.write(json);
+    }
+
+    @ExceptionHandler(value = SQLRecoverableException.class)
+    public void sQLRecoverableException(HttpServletRequest request,
+                                        HttpServletResponse response,
+                                        Exception exception) throws Exception {
+        exception.printStackTrace();
+        log.debug("ERROR::::：" + exception.getLocalizedMessage() + "::::::" + new Date());
+        log.debug("ERROR::::：" + exception.getCause() + "::::::" + new Date());
+        log.debug("ERROR::::：" + Arrays.toString(exception.getSuppressed()) + "::::::" + new Date());
+        log.debug("ERROR::::：" + exception.getMessage() + "::::::" + new Date());
+        log.debug("ERROR::::：" + Arrays.toString(exception.getStackTrace()) + "::::::" + new Date());
+        boolean b = isAjaxRequest(request);
+        if (b)
+            res(response, "数据库错误");
+        else
+            response.encodeRedirectURL("/error/500");
+    }
+
+    @ExceptionHandler(value = CannotGetJdbcConnectionException.class)
+    public void cannotGetJdbcConnectionException(HttpServletRequest request,
+                                                 HttpServletResponse response,
+                                                 Exception exception) throws Exception {
+        exception.printStackTrace();
+        log.debug("ERROR::::：" + exception.getLocalizedMessage() + "::::::" + new Date());
+        log.debug("ERROR::::：" + exception.getCause() + "::::::" + new Date());
+        log.debug("ERROR::::：" + Arrays.toString(exception.getSuppressed()) + "::::::" + new Date());
+        log.debug("ERROR::::：" + exception.getMessage() + "::::::" + new Date());
+        log.debug("ERROR::::：" + Arrays.toString(exception.getStackTrace()) + "::::::" + new Date());
+        boolean b = isAjaxRequest(request);
+        if (b)
+            res(response, "数据库错误");
+        else
+            response.encodeRedirectURL("/error/500");
+    }
+
+    /**
+     * 密码错误
+     *
+     * @param request
+     * @param exception
+     * @return
+     */
+    @ExceptionHandler(value = SQLException.class)
+    public void sQLException(HttpServletRequest request,
+                             HttpServletResponse response,
+                             Exception exception) throws Exception {
+        exception.printStackTrace();
+        log.debug("ERROR::::：" + exception.getLocalizedMessage() + "::::::" + new Date());
+        log.debug("ERROR::::：" + exception.getCause() + "::::::" + new Date());
+        log.debug("ERROR::::：" + Arrays.toString(exception.getSuppressed()) + "::::::" + new Date());
+        log.debug("ERROR::::：" + exception.getMessage() + "::::::" + new Date());
+        log.debug("ERROR::::：" + Arrays.toString(exception.getStackTrace()) + "::::::" + new Date());
+        boolean b = isAjaxRequest(request);
+        if (b)
+            res(response, "数据库错误");
+        else
+            response.encodeRedirectURL("/error/500");
+    }
+
+    /**
+     * 密码错误
+     *
+     * @param request
+     * @param exception
+     * @return
+     */
+    @ExceptionHandler(value = org.apache.ibatis.exceptions.PersistenceException.class)
+    public void persistenceException(HttpServletRequest request,
+                                     HttpServletResponse response,
+                                     Exception exception) throws Exception {
+        exception.printStackTrace();
+        log.debug("ERROR::::：" + exception.getLocalizedMessage() + "::::::" + new Date());
+        log.debug("ERROR::::：" + exception.getCause() + "::::::" + new Date());
+        log.debug("ERROR::::：" + Arrays.toString(exception.getSuppressed()) + "::::::" + new Date());
+        log.debug("ERROR::::：" + exception.getMessage() + "::::::" + new Date());
+        log.debug("ERROR::::：" + Arrays.toString(exception.getStackTrace()) + "::::::" + new Date());
+        boolean b = isAjaxRequest(request);
+        if (b)
+            res(response, "数据库错误");
+        else
+            response.encodeRedirectURL("/error/500");
     }
 
     /**
@@ -279,6 +364,23 @@ public class GlobalExceptionHandler {
     public void runtimeException(HttpServletRequest request,
                                  HttpServletResponse response,
                                  Exception exception) throws IOException {
+        exception.printStackTrace();
+        log.debug("ERROR::::：" + exception.getLocalizedMessage() + "::::::" + new Date());
+        log.debug("ERROR::::：" + exception.getCause() + "::::::" + new Date());
+        log.debug("ERROR::::：" + Arrays.toString(exception.getSuppressed()) + "::::::" + new Date());
+        log.debug("ERROR::::：" + exception.getMessage() + "::::::" + new Date());
+        log.debug("ERROR::::：" + Arrays.toString(exception.getStackTrace()) + "::::::" + new Date());
+        boolean b = isAjaxRequest(request);
+        if (b)
+            res(response, exception.getMessage());
+        else
+            response.encodeRedirectURL("/error/500");
+    }
+
+    @ExceptionHandler(value = Exception.class)
+    public void exception(HttpServletRequest request,
+                          HttpServletResponse response,
+                          Exception exception) throws IOException {
         exception.printStackTrace();
         log.debug("ERROR::::：" + exception.getLocalizedMessage() + "::::::" + new Date());
         log.debug("ERROR::::：" + exception.getCause() + "::::::" + new Date());
