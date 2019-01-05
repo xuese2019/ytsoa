@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.UnauthorizedException;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.BadSqlGrammarException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.ConnectException;
 import java.sql.SQLException;
 import java.sql.SQLRecoverableException;
 import java.sql.SQLSyntaxErrorException;
@@ -53,6 +55,57 @@ public class GlobalExceptionHandler {
         response.setCharacterEncoding("UTF-8");
         PrintWriter pw = response.getWriter();
         pw.write(json);
+    }
+
+    @ExceptionHandler(value = Throwable.class)
+    public void throwable(HttpServletRequest request,
+                          HttpServletResponse response,
+                          Exception exception) throws Exception {
+        exception.printStackTrace();
+        log.debug("ERROR::::：" + exception.getLocalizedMessage() + "::::::" + new Date());
+        log.debug("ERROR::::：" + exception.getCause() + "::::::" + new Date());
+        log.debug("ERROR::::：" + Arrays.toString(exception.getSuppressed()) + "::::::" + new Date());
+        log.debug("ERROR::::：" + exception.getMessage() + "::::::" + new Date());
+        log.debug("ERROR::::：" + Arrays.toString(exception.getStackTrace()) + "::::::" + new Date());
+        boolean b = isAjaxRequest(request);
+        if (b)
+            res(response, "数据库错误");
+        else
+            response.encodeRedirectURL("/error/500");
+    }
+
+    @ExceptionHandler(value = ConnectException.class)
+    public void connectException(HttpServletRequest request,
+                                 HttpServletResponse response,
+                                 Exception exception) throws Exception {
+        exception.printStackTrace();
+        log.debug("ERROR::::：" + exception.getLocalizedMessage() + "::::::" + new Date());
+        log.debug("ERROR::::：" + exception.getCause() + "::::::" + new Date());
+        log.debug("ERROR::::：" + Arrays.toString(exception.getSuppressed()) + "::::::" + new Date());
+        log.debug("ERROR::::：" + exception.getMessage() + "::::::" + new Date());
+        log.debug("ERROR::::：" + Arrays.toString(exception.getStackTrace()) + "::::::" + new Date());
+        boolean b = isAjaxRequest(request);
+        if (b)
+            res(response, "数据库连接错误");
+        else
+            response.encodeRedirectURL("/error/500");
+    }
+
+    @ExceptionHandler(value = DataAccessException.class)
+    public void dataAccessException(HttpServletRequest request,
+                                    HttpServletResponse response,
+                                    Exception exception) throws Exception {
+        exception.printStackTrace();
+        log.debug("ERROR::::：" + exception.getLocalizedMessage() + "::::::" + new Date());
+        log.debug("ERROR::::：" + exception.getCause() + "::::::" + new Date());
+        log.debug("ERROR::::：" + Arrays.toString(exception.getSuppressed()) + "::::::" + new Date());
+        log.debug("ERROR::::：" + exception.getMessage() + "::::::" + new Date());
+        log.debug("ERROR::::：" + Arrays.toString(exception.getStackTrace()) + "::::::" + new Date());
+        boolean b = isAjaxRequest(request);
+        if (b)
+            res(response, "数据库错误");
+        else
+            response.encodeRedirectURL("/error/500");
     }
 
     @ExceptionHandler(value = SQLRecoverableException.class)
